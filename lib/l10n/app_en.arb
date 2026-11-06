@@ -1,5 +1,7 @@
 {
   "@@locale": "en",
+  "languageNativeName": "English",
+  "@languageNativeName": {"description": "The name of this language, written in this language. Shown in the language picker."},
   "appTitle": "dailywall",
   "@appTitle": {"description": "App name. Not translated."},
   "homeTitle": "Today",

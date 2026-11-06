@@ -36,12 +36,12 @@ class SettingsScreen extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.language_rounded),
             title: Text(l10n.settingsLanguage),
-            subtitle: Text(languageNames[language] ?? language),
+            subtitle: Text(languageName(language)),
             onTap: () => _pick<String>(
               context,
               title: l10n.settingsLanguage,
               options: appLanguages,
-              label: (c) => languageNames[c] ?? c,
+              label: (c) => languageName(c),
               selected: language,
               onSelected: (c) => update((s) => s.copyWith(languageCode: c)),
             ),

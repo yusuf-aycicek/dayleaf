@@ -53,4 +53,12 @@ IconData targetIcon(WallpaperTarget t) => switch (t) {
 };
 
 /// Language names are shown in their own language.
-const languageNames = {'tr': 'Türkçe', 'en': 'English'};
+/// A language's own name ("Türkçe", "English"), read from its ARB file, so
+/// adding a language needs no code change here.
+String languageName(String code) {
+  try {
+    return lookupAppLocalizations(Locale(code)).languageNativeName;
+  } on FlutterError {
+    return code;
+  }
+}

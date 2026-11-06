@@ -10,6 +10,9 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
+  String get languageNativeName => 'Türkçe';
+
+  @override
   String get appTitle => 'dailywall';
 
   @override

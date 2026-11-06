@@ -98,6 +98,12 @@ abstract class AppLocalizations {
     Locale('tr'),
   ];
 
+  /// The name of this language, written in this language. Shown in the language picker.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageNativeName;
+
   /// App name. Not translated.
   ///
   /// In en, this message translates to:

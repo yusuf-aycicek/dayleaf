@@ -152,7 +152,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
           children: [
             for (final code in appLanguages)
               ChoiceTile(
-                title: languageNames[code] ?? code,
+                title: languageName(code),
                 selected: language == code,
                 onTap: () => _update((x) => x.copyWith(languageCode: code)),
               ),

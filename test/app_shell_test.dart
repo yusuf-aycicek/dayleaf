@@ -1,5 +1,6 @@
 import 'package:dailywall/app/app.dart';
 import 'package:dailywall/l10n/gen/app_localizations.dart';
+import 'package:dailywall/ui/labels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -29,5 +30,11 @@ void main() {
       AppLocalizations.supportedLocales.map((l) => l.languageCode).toSet(),
       {'en', 'tr'},
     );
+  });
+
+  test('every language names itself in its own ARB file', () {
+    expect(languageName('tr'), 'Türkçe');
+    expect(languageName('en'), 'English');
+    expect(languageName('xx'), 'xx');
   });
 }
