@@ -5,7 +5,7 @@ import 'content_models.dart';
 
 /// Upper bounds that keep every item readable on a phone wallpaper.
 abstract final class ContentLimits {
-  static const int word = 32;
+  static const int word = 24;
   static const int meaning = 100;
   static const int example = 160;
   static const int text = 120;
