@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appTitle": "dailywall",
+  "@appTitle": {
+    "description": "App name. Not translated."
+  },
+  "homeTitle": "Today",
+  "historyTitle": "History",
+  "favoritesTitle": "Favorites",
+  "settingsTitle": "Settings"
+}

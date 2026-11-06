@@ -1,0 +1,7 @@
+# Golden (pixel comparison) tests depend on the host's font rasterizer, so
+# images generated on Windows differ from Linux CI. CI runs:
+#   flutter test --exclude-tags golden
+# Run them locally with: flutter test --tags golden
+# Update them with:      flutter test --tags golden --update-goldens
+tags:
+  golden:
