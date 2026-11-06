@@ -23,6 +23,9 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
+      - name: Validate content
+        run: dart run tools/validate_content.dart
+
       # Golden tests are excluded: font rasterization differs between the
       # Windows machine that generated them and Linux. Size, safe-area and
       # contrast tests still run here.

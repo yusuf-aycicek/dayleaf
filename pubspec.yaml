@@ -48,3 +48,4 @@ flutter:
 
   assets:
     - assets/fonts/
+    - assets/content/
