@@ -151,6 +151,384 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'General knowledge'**
   String get categoryGeneralKnowledge;
+
+  /// No description provided for @categoryEnglishWordsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A new word with its meaning and an example'**
+  String get categoryEnglishWordsDescription;
+
+  /// No description provided for @categorySoftwareTipsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical tips for writing better code'**
+  String get categorySoftwareTipsDescription;
+
+  /// No description provided for @categoryMotivationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A short thought to start your day'**
+  String get categoryMotivationDescription;
+
+  /// No description provided for @categoryGeneralKnowledgeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A surprising, checked fact'**
+  String get categoryGeneralKnowledgeDescription;
+
+  /// No description provided for @levelA1.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get levelA1;
+
+  /// No description provided for @levelA2.
+  ///
+  /// In en, this message translates to:
+  /// **'Elementary'**
+  String get levelA2;
+
+  /// No description provided for @levelB1.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get levelB1;
+
+  /// No description provided for @levelB2.
+  ///
+  /// In en, this message translates to:
+  /// **'Upper intermediate'**
+  String get levelB2;
+
+  /// No description provided for @levelC1.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced'**
+  String get levelC1;
+
+  /// No description provided for @targetLock.
+  ///
+  /// In en, this message translates to:
+  /// **'Lock screen'**
+  String get targetLock;
+
+  /// No description provided for @targetHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Home screen'**
+  String get targetHome;
+
+  /// No description provided for @targetBoth.
+  ///
+  /// In en, this message translates to:
+  /// **'Both'**
+  String get targetBoth;
+
+  /// No description provided for @templateMinimal.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimal'**
+  String get templateMinimal;
+
+  /// No description provided for @templateCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get templateCard;
+
+  /// No description provided for @templateBold.
+  ///
+  /// In en, this message translates to:
+  /// **'Bold type'**
+  String get templateBold;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @selectAtLeastOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Select at least one'**
+  String get selectAtLeastOne;
+
+  /// No description provided for @onboardingLanguageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your language'**
+  String get onboardingLanguageTitle;
+
+  /// No description provided for @onboardingLanguageBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The app and your daily content will use this language.'**
+  String get onboardingLanguageBody;
+
+  /// No description provided for @onboardingInterestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What would you like to see every day?'**
+  String get onboardingInterestsTitle;
+
+  /// No description provided for @onboardingInterestsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick one or more. They take turns day by day.'**
+  String get onboardingInterestsBody;
+
+  /// No description provided for @onboardingLevelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your English level'**
+  String get onboardingLevelTitle;
+
+  /// No description provided for @onboardingLevelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Words are chosen for this level. You can change it later.'**
+  String get onboardingLevelBody;
+
+  /// No description provided for @onboardingTargetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Where should it appear?'**
+  String get onboardingTargetTitle;
+
+  /// No description provided for @onboardingTargetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can change this later in Settings.'**
+  String get onboardingTargetBody;
+
+  /// No description provided for @onboardingTemplateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick a style'**
+  String get onboardingTemplateTitle;
+
+  /// No description provided for @onboardingTemplateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Backgrounds are generated on your phone and change every day.'**
+  String get onboardingTemplateBody;
+
+  /// No description provided for @onboardingApplyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All set'**
+  String get onboardingApplyTitle;
+
+  /// No description provided for @onboardingApplyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'dailywall creates today\'s wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.'**
+  String get onboardingApplyBody;
+
+  /// No description provided for @onboardingApplyButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Set my wallpaper'**
+  String get onboardingApplyButton;
+
+  /// No description provided for @applyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply now'**
+  String get applyNow;
+
+  /// No description provided for @applied.
+  ///
+  /// In en, this message translates to:
+  /// **'Wallpaper updated'**
+  String get applied;
+
+  /// No description provided for @applyFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Couldn\'t set the wallpaper'**
+  String get applyFailed;
+
+  /// No description provided for @favorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favorite;
+
+  /// No description provided for @unfavorite.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favorites'**
+  String get unfavorite;
+
+  /// No description provided for @share.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get share;
+
+  /// No description provided for @iKnowThis.
+  ///
+  /// In en, this message translates to:
+  /// **'I know this'**
+  String get iKnowThis;
+
+  /// No description provided for @showAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Show again'**
+  String get showAgain;
+
+  /// No description provided for @knownMarked.
+  ///
+  /// In en, this message translates to:
+  /// **'This word won\'t be shown again'**
+  String get knownMarked;
+
+  /// No description provided for @repeatMarked.
+  ///
+  /// In en, this message translates to:
+  /// **'This word will come back in 2 days'**
+  String get repeatMarked;
+
+  /// No description provided for @reviewBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get reviewBadge;
+
+  /// No description provided for @noContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one interest in Settings.'**
+  String get noContent;
+
+  /// No description provided for @previewLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview of today\'s wallpaper'**
+  String get previewLabel;
+
+  /// No description provided for @historyEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Content from previous days will appear here.'**
+  String get historyEmpty;
+
+  /// No description provided for @favoritesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the heart on a wallpaper to keep it here.'**
+  String get favoritesEmpty;
+
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguage;
+
+  /// No description provided for @settingsInterests.
+  ///
+  /// In en, this message translates to:
+  /// **'Interests'**
+  String get settingsInterests;
+
+  /// No description provided for @settingsLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'English level'**
+  String get settingsLevel;
+
+  /// No description provided for @settingsTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply to'**
+  String get settingsTarget;
+
+  /// No description provided for @settingsTemplate.
+  ///
+  /// In en, this message translates to:
+  /// **'Style'**
+  String get settingsTemplate;
+
+  /// No description provided for @settingsDailyChange.
+  ///
+  /// In en, this message translates to:
+  /// **'Change every day'**
+  String get settingsDailyChange;
+
+  /// No description provided for @settingsDailyChangeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A new wallpaper is set automatically each day.'**
+  String get settingsDailyChangeSubtitle;
+
+  /// No description provided for @settingsAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get settingsAbout;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @aboutDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily wallpapers created on your device from your interests. Works fully offline.'**
+  String get aboutDescription;
+
+  /// No description provided for @aboutVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}'**
+  String aboutVersion(String version);
+
+  /// No description provided for @aboutDeveloper.
+  ///
+  /// In en, this message translates to:
+  /// **'Developer'**
+  String get aboutDeveloper;
+
+  /// No description provided for @aboutSourceCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Source code on GitHub'**
+  String get aboutSourceCode;
+
+  /// No description provided for @aboutPrivacy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy policy'**
+  String get aboutPrivacy;
+
+  /// No description provided for @aboutLicenses.
+  ///
+  /// In en, this message translates to:
+  /// **'Open source licenses'**
+  String get aboutLicenses;
+
+  /// No description provided for @logoLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Yusuf Ayçiçek\'s logo'**
+  String get logoLabel;
 }
 
 class _AppLocalizationsDelegate
