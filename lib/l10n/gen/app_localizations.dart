@@ -127,6 +127,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsTitle;
+
+  /// No description provided for @categoryEnglishWords.
+  ///
+  /// In en, this message translates to:
+  /// **'English word'**
+  String get categoryEnglishWords;
+
+  /// No description provided for @categorySoftwareTips.
+  ///
+  /// In en, this message translates to:
+  /// **'Software tip'**
+  String get categorySoftwareTips;
+
+  /// No description provided for @categoryMotivation.
+  ///
+  /// In en, this message translates to:
+  /// **'Motivation'**
+  String get categoryMotivation;
+
+  /// No description provided for @categoryGeneralKnowledge.
+  ///
+  /// In en, this message translates to:
+  /// **'General knowledge'**
+  String get categoryGeneralKnowledge;
 }
 
 class _AppLocalizationsDelegate

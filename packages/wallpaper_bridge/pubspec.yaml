@@ -1,0 +1,23 @@
+name: wallpaper_bridge
+description: >-
+  dailywall's platform layer: sets the device wallpaper through Android's
+  WallpaperManager and reports the physical display size. Kept as a local
+  plugin so it is registered in every Flutter engine, including the
+  WorkManager background engine.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.13.7
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.yusufaycicek.wallpaper_bridge
+        pluginClass: WallpaperBridgePlugin

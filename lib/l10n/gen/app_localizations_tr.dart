@@ -23,4 +23,16 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get settingsTitle => 'Ayarlar';
+
+  @override
+  String get categoryEnglishWords => 'İngilizce kelime';
+
+  @override
+  String get categorySoftwareTips => 'Yazılım ipucu';
+
+  @override
+  String get categoryMotivation => 'Motivasyon';
+
+  @override
+  String get categoryGeneralKnowledge => 'Genel kültür';
 }

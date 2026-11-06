@@ -23,4 +23,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsTitle => 'Settings';
+
+  @override
+  String get categoryEnglishWords => 'English word';
+
+  @override
+  String get categorySoftwareTips => 'Software tip';
+
+  @override
+  String get categoryMotivation => 'Motivation';
+
+  @override
+  String get categoryGeneralKnowledge => 'General knowledge';
 }

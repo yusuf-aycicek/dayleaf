@@ -7,5 +7,10 @@
   "homeTitle": "Today",
   "historyTitle": "History",
   "favoritesTitle": "Favorites",
-  "settingsTitle": "Settings"
+  "settingsTitle": "Settings",
+
+  "categoryEnglishWords": "English word",
+  "categorySoftwareTips": "Software tip",
+  "categoryMotivation": "Motivation",
+  "categoryGeneralKnowledge": "General knowledge"
 }

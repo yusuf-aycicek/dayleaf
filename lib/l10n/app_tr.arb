@@ -4,5 +4,10 @@
   "homeTitle": "Bugün",
   "historyTitle": "Geçmiş",
   "favoritesTitle": "Favoriler",
-  "settingsTitle": "Ayarlar"
+  "settingsTitle": "Ayarlar",
+
+  "categoryEnglishWords": "İngilizce kelime",
+  "categorySoftwareTips": "Yazılım ipucu",
+  "categoryMotivation": "Motivasyon",
+  "categoryGeneralKnowledge": "Genel kültür"
 }
