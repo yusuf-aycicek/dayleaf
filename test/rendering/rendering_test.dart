@@ -227,13 +227,10 @@ void main() {
       'the safe area avoids the lock-screen clock and the bottom shortcuts',
       () {
         final box = WallpaperSafeArea.textBox(const Size(1080, 2400));
-        expect(box.top, greaterThanOrEqualTo(2400 * 0.33));
-        expect(box.bottom, lessThanOrEqualTo(2400 * 0.81));
-        expect(
-          (box.center.dy / 2400 - 0.5).abs(),
-          lessThan(0.1),
-          reason: 'text sits near the middle',
-        );
+        expect(box.top, greaterThanOrEqualTo(2400 * 0.29));
+        // Home-screen icons start at ~65% (Pixel launcher, measured).
+        expect(box.bottom, lessThanOrEqualTo(2400 * 0.63));
+        expect(box.height, greaterThanOrEqualTo(2400 * 0.3));
       },
     );
 

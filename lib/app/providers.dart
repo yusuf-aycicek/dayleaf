@@ -46,7 +46,8 @@ class SettingsNotifier extends AsyncNotifier<UserSettings> {
         !current.onboardingComplete) {
       await ref.read(scheduleDailyProvider)(next.dailyChangeEnabled);
     }
-    ref.invalidate(todayProvider);
+    // todayProvider watches this provider, so it re-runs by itself;
+    // invalidating it from here is a circular dependency in Riverpod.
     if (current.onboardingComplete) {
       unawaited(
         service

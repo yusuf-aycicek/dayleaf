@@ -28,9 +28,9 @@ Ekran görüntüleri [`docs/screenshots/`](docs/screenshots/) klasörüne konur.
 alınacağı için [docs/guides.tr.md](docs/guides.tr.md#5-readme-ekran-görüntüleri)
 dosyasına bakın.
 
-| Karşılama | Bugün | Kilit ekranı | Ana ekran |
-|---|---|---|---|
-| ![](docs/screenshots/onboarding.png) | ![](docs/screenshots/today.png) | ![](docs/screenshots/lock.png) | ![](docs/screenshots/home.png) |
+| Karşılama | Bugün | Ana ekran |
+|---|---|---|
+| ![](docs/screenshots/onboarding.png) | ![](docs/screenshots/today.png) | ![](docs/screenshots/home.png) |
 
 ## Mimari
 

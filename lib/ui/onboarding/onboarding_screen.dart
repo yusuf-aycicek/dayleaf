@@ -44,13 +44,17 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
     setState(() => _applying = true);
     final l10n = AppLocalizations.of(context);
     final messenger = ScaffoldMessenger.of(context);
-    await ref
-        .read(settingsProvider.notifier)
-        .change((s) => s.copyWith(onboardingComplete: true));
-    final result = await ref
-        .read(serviceProvider)
-        .ensureToday(trigger: ApplyTrigger.user, force: true);
-    ref.invalidate(progressProvider);
+    // Completing onboarding makes the root replace this screen, so nothing
+    // below may use `ref` or `context` after the first await.
+    final settings = ref.read(settingsProvider.notifier);
+    final service = ref.read(serviceProvider);
+    final container = ProviderScope.containerOf(context, listen: false);
+    await settings.change((s) => s.copyWith(onboardingComplete: true));
+    final result = await service.ensureToday(
+      trigger: ApplyTrigger.user,
+      force: true,
+    );
+    container.invalidate(progressProvider);
     // The root swaps this screen for the home screen once onboarding is
     // complete, so this widget may be gone; the messenger is not.
     if (mounted) setState(() => _applying = false);

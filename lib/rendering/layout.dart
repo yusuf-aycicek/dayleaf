@@ -4,12 +4,13 @@ import 'color_math.dart';
 
 /// Where text may go on a wallpaper.
 ///
-/// The lock screen clock (large on Android 12+) sits in the top third and
-/// the shortcuts / home-screen dock at the bottom, so text is kept in a
-/// band around the middle with side margins.
+/// The lock screen clock (large on Android 12+) sits in the top part, and
+/// on the home screen the app icons start at about 65% of the height (Pixel
+/// launcher, 1080x2400, measured on the emulator). Text is kept in a band
+/// above the icons, with side margins.
 abstract final class WallpaperSafeArea {
-  static const double top = 0.34;
-  static const double bottom = 0.80;
+  static const double top = 0.30;
+  static const double bottom = 0.62;
   static const double side = 0.08;
 
   static Rect textBox(Size size) => Rect.fromLTRB(
