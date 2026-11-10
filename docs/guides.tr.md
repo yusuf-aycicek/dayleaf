@@ -40,7 +40,16 @@ seviye → nereye → stil → **Duvar kâğıdını ayarla**.
    kilit ekranı bir önceki adımdaki gibi kalmalı.
 5. *İkisi de* → **Şimdi uygula**: iki ekran aynı görüntüyü göstermeli.
 
-Komut satırından da bakılabilir (iki ayrı duvar kâğıdı kimliği görünür):
+Kilit ekranı yalnızca bir ekran kilidi tanımlıysa görünür. Ayarın gerçekten açık
+olduğunu şöyle kontrol edin; `true` çıkarsa kilit kapalıdır (Ayarlar → Güvenlik →
+Ekran kilidi → Kaydırma):
+
+```bash
+adb shell cmd lock_settings get-disabled
+```
+
+Komut satırından da bakılabilir (iki ayrı duvar kâğıdı kimliği görünür; `mWhich=1`
+ana ekran, `2` kilit ekranı, `3` ikisi):
 
 ```bash
 adb shell dumpsys wallpaper | grep -iE "mWhich|mWallpaperId|FLAG_LOCK|FLAG_SYSTEM"
@@ -63,23 +72,46 @@ bölümü:
 - *Pretend it is tomorrow*: günü bir ileri alır; yeni içerik seçilir ve uygulanır.
   Bunu kullandıktan sonra *Reset day offset* ile sıfırlayın.
 
-**b) Gerçek periyodik işi adb ile zorla çalıştırmak** (uygulama kapalıyken, ayrı arka
-plan motorunun da çalıştığını görmek için):
+**b) Uygulama kapalıyken arka plan işi** (ayrı süreçte, ayrı Flutter motoruyla
+çalıştığını görmek için; Pixel 7 API 37 emülatöründe denendi):
+
+1. Uygulamada Ayarlar → Developer → *Run the background task in 1 minute*. Tek
+   seferlik iş 1 dakika sonrasına kuyruğa girer.
+2. Uygulamayı kapatın. `force-stop` **kullanmayın**: o, uygulamanın bütün zamanlanmış
+   işlerini de siler.
+
+   ```bash
+   adb shell input keyevent KEYCODE_HOME
+   adb shell am kill com.yusufaycicek.dailywall
+   adb shell pidof com.yusufaycicek.dailywall    # boş çıkmalı
+   ```
+
+3. Bir dakika sonra:
+
+   ```bash
+   adb logcat -s flutter
+   # dailywall background task "applyDailyWallpaperNow": ApplyResult(...)
+   adb shell pidof com.yusufaycicek.dailywall    # yeni bir süreç kimliği
+   adb shell dumpsys wallpaper | grep "id="       # duvar kâğıdı değiştiyse id artar
+   ```
+
+   Bugünün duvar kâğıdı zaten konmuşsa sonuç `alreadyApplied` olur ve duvar kâğıdı
+   değişmez. Değişimi görmek için önce *Pretend it is tomorrow* kullanın ya da
+   aşağıdaki (d) yolunu izleyin.
+
+Periyodik işi (`dailywall.daily`) adb ile **öne alamazsınız**. İşin kimliğini görmek
+için:
 
 ```bash
-adb shell am force-stop com.yusufaycicek.dailywall
-adb shell dumpsys jobscheduler com.yusufaycicek.dailywall | grep -E "JOB #|SystemJobService"
+adb shell dumpsys jobscheduler | grep "JOB androidx.work.systemjobscheduler" | grep dailywall
+# JOB androidx.work.systemjobscheduler:u0a235/3: ... -> kimlik 3
 ```
 
-Çıktıdaki `JOB #u0a190/12: ...` satırındaki `/` sonrası sayı iş kimliğidir (ör. `12`):
-
-```bash
-adb shell cmd jobscheduler run -f com.yusufaycicek.dailywall 12
-adb logcat -s flutter WM-WorkerWrapper
-```
-
-Logcat'te `dailywall: background ...` satırı görünür. Uygulamayı açınca Ayarlar →
-Developer → *Background log* da aynı çalışmayı gösterir.
+Android 14+'ta WorkManager işleri bir ad alanında tuttuğu için zorlama komutu `-n`
+ister: `adb shell cmd jobscheduler run -f -n androidx.work.systemjobscheduler
+com.yusufaycicek.dailywall 3`. Ama WorkManager periyodik işi süresi dolmadan
+çalıştırmaz; logcat'te `WM-WorkerWrapper: ... is ENQUEUED; not doing any work`
+yazar. Bu yüzden (b)'deki tek seferlik iş kullanılır.
 
 **c) WorkManager'ın kendi tanılama çıktısı** (debug derlemesi):
 
@@ -89,8 +121,8 @@ adb logcat -s WM-DiagnosticsWrkr
 ```
 
 **d) Ertesi günü saatle denemek:** emülatörün Ayarlar → Sistem → Tarih ve saat →
-otomatik saati kapatıp tarihi bir gün ileri alın, sonra (b)'deki komutu çalıştırın.
-Bittiğinde otomatik saati geri açın.
+otomatik saati kapatıp tarihi bir gün ileri alın, sonra (b)'deki adımları izleyin
+(bu yol ayrıca denenmedi). Bittiğinde otomatik saati geri açın.
 
 ## 4. Release derlemesi, imzalı AAB ve anahtarın güvenliği
 

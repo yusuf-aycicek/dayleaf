@@ -1,7 +1,11 @@
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../app/daily_wallpaper_service.dart' show categoryLabel;
+import '../../app/providers.dart';
+import '../../data/content_models.dart';
 import '../../domain/user_settings.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../../rendering/background.dart';
@@ -10,8 +14,43 @@ import '../../rendering/wallpaper_content.dart';
 import '../../rendering/wallpaper_renderer.dart';
 import '../labels.dart';
 
+/// What the style previews show: a real item from the user's first
+/// interest (at their English level for words), so the badge and the text
+/// always match. Until the content has loaded, a motivation line with the
+/// motivation badge.
+WallpaperContent previewSample({
+  required ContentLibrary? library,
+  required UserSettings settings,
+  required String language,
+  required AppLocalizations l10n,
+}) {
+  final categoryId = settings.categoryIds.firstOrNull;
+  final items = categoryId == null || library == null
+      ? const <ContentItem>[]
+      : library.itemsOf(categoryId);
+  if (categoryId != null && items.isNotEmpty) {
+    final item = items.firstWhere(
+      (i) => i is! WordItem || i.level == settings.englishLevel,
+      orElse: () => items.first,
+    );
+    return WallpaperContent.fromItem(
+      item,
+      language: language,
+      categoryLabel: categoryLabel(l10n, categoryId),
+    );
+  }
+  return WallpaperContent(
+    language: language,
+    badge: categoryLabel(l10n, 'motivation'),
+    title: language == 'tr' ? 'Küçük adımlar birikir.' : 'Small steps add up.',
+    body: language == 'tr'
+        ? 'Günde on dakika, bir yılda 60 saatten fazla eder.'
+        : 'Ten minutes a day is more than 60 hours a year.',
+  );
+}
+
 /// Three small live renders, one per template, to choose from.
-class TemplatePicker extends StatelessWidget {
+class TemplatePicker extends ConsumerWidget {
   const TemplatePicker({
     super.key,
     required this.selected,
@@ -24,17 +63,15 @@ class TemplatePicker extends StatelessWidget {
   final ValueChanged<String> onSelected;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final scheme = Theme.of(context).colorScheme;
     final lang = Localizations.localeOf(context).languageCode;
-    final sample = WallpaperContent(
+    final sample = previewSample(
+      library: ref.watch(contentLibraryProvider).value,
+      settings: settings,
       language: lang,
-      badge: l10n.category(settings.categoryIds.firstOrNull ?? 'motivation'),
-      title: lang == 'tr' ? 'Küçük adımlar birikir.' : 'Small steps add up.',
-      body: lang == 'tr'
-          ? 'Günde on dakika, bir yılda 60 saatten fazla eder.'
-          : 'Ten minutes a day is more than 60 hours a year.',
+      l10n: l10n,
     );
     return Wrap(
       spacing: 12,

@@ -285,6 +285,17 @@ class _DebugSectionState extends ConsumerState<_DebugSection> {
           },
         ),
         ListTile(
+          leading: const Icon(Icons.timer_outlined),
+          title: const Text('Run the background task in 1 minute'),
+          subtitle: const Text(
+            'Close the app now to test the job with the app closed',
+          ),
+          onTap: () async {
+            await BackgroundTasks.runOnceNow(delay: const Duration(minutes: 1));
+            _snack('Enqueued for 1 minute from now. Close the app.');
+          },
+        ),
+        ListTile(
           leading: const Icon(Icons.fast_forward_rounded),
           title: Text('Pretend it is tomorrow (offset: $_offset)'),
           onTap: () => _shiftDays(_offset + 1),

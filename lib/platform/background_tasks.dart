@@ -34,12 +34,17 @@ abstract final class BackgroundTasks {
 
   static Future<void> cancel() => Workmanager().cancelByUniqueName(uniqueName);
 
-  /// Debug: run the job once, now (the same code path as the daily run).
-  static Future<void> runOnceNow() => Workmanager().registerOneOffTask(
-    'dailywall.debug.${DateTime.now().millisecondsSinceEpoch}',
-    debugTaskName,
-    existingWorkPolicy: ExistingWorkPolicy.append,
-  );
+  /// Debug: run the job once (the same code path as the daily run), now
+  /// or after [delay]. A delay leaves time to close the app, so the job
+  /// runs in a fresh process; WorkManager will not run the periodic job
+  /// early, even when it is forced with `adb shell cmd jobscheduler run`.
+  static Future<void> runOnceNow({Duration delay = Duration.zero}) =>
+      Workmanager().registerOneOffTask(
+        'dailywall.debug.${DateTime.now().millisecondsSinceEpoch}',
+        debugTaskName,
+        existingWorkPolicy: ExistingWorkPolicy.append,
+        initialDelay: delay,
+      );
 }
 
 /// Entry point of the background engine. Must be a top-level function
