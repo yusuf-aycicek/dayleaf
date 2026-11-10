@@ -52,6 +52,7 @@ class Ts {
     this.italic = false,
     this.spacing = 0,
     this.height = 1.22,
+    this.glow,
   });
 
   final String family;
@@ -66,6 +67,9 @@ class Ts {
   final double spacing;
   final double height;
 
+  /// A soft halo of this color around the letters (a CRT phosphor glow).
+  final Color? glow;
+
   Ts copyWith({
     String? family,
     double? size,
@@ -74,6 +78,7 @@ class Ts {
     bool? italic,
     double? spacing,
     double? height,
+    Color? glow,
   }) => Ts(
     family: family ?? this.family,
     size: size ?? this.size,
@@ -82,6 +87,7 @@ class Ts {
     italic: italic ?? this.italic,
     spacing: spacing ?? this.spacing,
     height: height ?? this.height,
+    glow: glow ?? this.glow,
   );
 }
 
@@ -131,6 +137,12 @@ class TextPiece extends Piece {
           fontWeight: _nearestWeight(s.weight),
           fontStyle: s.italic ? FontStyle.italic : FontStyle.normal,
           fontVariations: [ui.FontVariation('wght', s.weight)],
+          shadows: s.glow == null
+              ? null
+              : [
+                  Shadow(color: s.glow!, blurRadius: fontSize * 0.35),
+                  Shadow(color: s.glow!, blurRadius: fontSize * 0.12),
+                ],
         ),
       );
       builder.addText(text);

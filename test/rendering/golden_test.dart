@@ -55,6 +55,11 @@ void main() {
       ..writeln(
         '${book.recipes.length} recipes in ${book.families.length} families.',
       );
+    index
+      ..writeln()
+      ..writeln('One recipe per family (`tools/design/overview.py`):')
+      ..writeln()
+      ..writeln('<img src="overview.png" width="780">');
     for (final f in book.families) {
       index
         ..writeln()

@@ -17,7 +17,7 @@ no internet permission, no account, no ads and no analytics.
   Categories take turns day by day.
 - **Readable:** text stays clear of the lock-screen clock and the home-screen
   shortcuts. It shrinks to fit and always meets a WCAG contrast ratio of 4.5:1.
-- **Style engine:** 49 styles in 10 families (dictionary page, terminal, calendar
+- **Style engine:** 50 styles in 10 families (dictionary page, terminal, calendar
   page, wall calendar, risograph, topographic, halftone, Bauhaus, waves, notebook).
   Pick families and let it surprise you every day, or pin one style. Backgrounds are
   drawn in code from the date and the category, so the same day always looks the
@@ -129,7 +129,8 @@ and a font pair (all by id), the family, and `premium`. Run
 `flutter test test/rendering`: invalid recipes (an unknown part, text contrast below
 4.5:1, a font that is not bundled) fail `style_book_test.dart`, and
 `rendering_test.dart` checks every recipe at three screen sizes with long and short
-texts. Then regenerate the catalog with `--update-goldens`.
+texts. Then regenerate the catalog with `--update-goldens` and the one-per-family
+overview with `python tools/design/overview.py`.
 
 ### Testing the daily change without waiting
 

@@ -57,6 +57,7 @@ abstract final class StyleLayouts {
   static const List<StyleLayout> list = [
     DictionaryLayout(),
     TerminalLayout(),
+    TerminalLayout(glow: true),
     CalendarLayout(),
     PosterLayout(),
     PosterLayout(offsetPrint: true),
@@ -158,10 +159,10 @@ List<String> splitMeanings(String meaning) {
   return parts.length > 3 || parts.isEmpty ? [meaning] : parts;
 }
 
-/// A dictionary page: guide words and a double rule, the syllabified
-/// headword, pronunciation, red italic part of speech, a framed level,
-/// numbered senses in red, an italic example under a hairline, and the
-/// issue number with the date at the bottom.
+/// A dictionary page: the guide word with the issue number and the date
+/// over a double rule, the syllabified headword, pronunciation, red italic
+/// part of speech, a framed level, numbered senses in red, and an italic
+/// example with its translation under a hairline.
 class DictionaryLayout extends StyleLayout {
   const DictionaryLayout();
 
@@ -177,37 +178,35 @@ class DictionaryLayout extends StyleLayout {
     FontPair f,
     BackgroundResult bg,
   ) => placeContent(canvas, size, bg, grow: 1.3, (u, width) {
+    // The safe band is short, so the page is compact: the issue number and
+    // the date share the guide-word line, the senses run on one line.
     final display = Ts(
       family: f.display,
-      size: c.isWord ? 0.165 : 0.082,
+      size: c.isWord ? 0.25 : 0.12,
       weight: f.displayWeight,
       color: p.ink,
-      height: c.isWord ? 1.0 : 1.08,
+      height: c.isWord ? 0.95 : 1.06,
     );
     final body = Ts(
       family: f.body,
-      size: 0.044,
+      size: 0.062,
       weight: f.bodyWeight,
       color: p.ink,
-      height: 1.32,
+      height: 1.28,
     );
-    final small = body.copyWith(size: 0.03, color: p.muted, spacing: 0.04);
+    final small = body.copyWith(size: 0.034, color: p.muted, spacing: 0.03);
     final guide = c.isWord ? c.title.toLowerCase() : c.categoryLabel;
-    final initial = upperFor(
-      String.fromCharCode(c.title.runes.first),
-      c.titleLanguage,
-    );
 
     final pron = <(String, Ts)>[
       if (c.ipa != null)
-        ('/${c.ipa}/  ', body.copyWith(size: 0.038, color: p.muted)),
+        ('/${c.ipa}/  ', body.copyWith(size: 0.05, color: p.muted)),
       if (c.partOfSpeech != null)
         (
           c.partOfSpeech!,
-          body.copyWith(size: 0.042, italic: true, color: p.accent),
+          body.copyWith(size: 0.056, italic: true, color: p.accent),
         ),
       if (!c.isWord)
-        (c.badge, body.copyWith(size: 0.04, italic: true, color: p.accent)),
+        (c.badge, body.copyWith(size: 0.05, italic: true, color: p.accent)),
     ];
     final badge = c.level == null
         ? null
@@ -218,31 +217,19 @@ class DictionaryLayout extends StyleLayout {
               small.copyWith(color: p.ink, weight: 600, spacing: 0.08),
               maxWidth: width,
             ),
-            padX: u(0.014),
+            padX: u(0.016),
             padY: u(0.004),
             border: p.ink,
-            borderWidth: u.line(0.0016),
+            borderWidth: u.line(0.002),
           );
     final pronPiece = pron.isEmpty
         ? null
         : TextPiece(u, pron, maxWidth: width - (badge?.width ?? 0) - u(0.03));
 
-    Piece sense(int n, String text) {
-      final number = TextPiece.plain(
-        u,
-        '$n',
-        body.copyWith(color: p.accent, weight: 700),
-        maxWidth: u(0.06),
-      );
-      return HBox([
-        SizedPiece(number, u(0.06)),
-        TextPiece.plain(u, text, body, maxWidth: width - u(0.06)),
-      ], align: RowAlign.top);
-    }
-
     final senses = c.isWord && c.subtitle != null
         ? splitMeanings(c.subtitle!)
         : const <String>[];
+    final number = body.copyWith(color: p.accent, weight: 700);
     return VBox([
       HBox(
         [
@@ -250,13 +237,13 @@ class DictionaryLayout extends StyleLayout {
             u,
             guide,
             small.copyWith(italic: true),
-            maxWidth: width * 0.7,
+            maxWidth: width * 0.4,
           ),
           TextPiece.plain(
             u,
-            initial,
-            display.copyWith(size: 0.05, height: 1.0, color: p.ink),
-            maxWidth: width * 0.25,
+            'No. ${c.labels.dayOfYear} · ${c.labels.longDate}',
+            small,
+            maxWidth: width * 0.58,
           ),
         ],
         spread: width,
@@ -264,12 +251,12 @@ class DictionaryLayout extends StyleLayout {
       ),
       Rule(
         width,
-        u.line(0.0018),
+        u.line(0.0022),
         p.ink,
         style: RuleStyle.double,
         padding: u(0.01),
       ),
-      Gap(u(0.045)),
+      Gap(u(0.03)),
       if (c.isWord)
         TextPiece.plain(
           u,
@@ -279,48 +266,39 @@ class DictionaryLayout extends StyleLayout {
         )
       else
         TextPiece.plain(u, c.title, display, maxWidth: width),
-      Gap(u(0.02)),
+      Gap(u(0.014)),
       if (pronPiece != null || badge != null)
         HBox([?pronPiece, ?badge], gap: u(0.03)),
-      Gap(u(0.04)),
-      for (final (i, s) in senses.indexed) ...[
-        if (i > 0) Gap(u(0.012)),
-        senses.length == 1
-            ? TextPiece.plain(u, s, body, maxWidth: width)
-            : sense(i + 1, s),
-      ],
+      Gap(u(0.024)),
+      if (senses.length == 1)
+        TextPiece.plain(u, senses.single, body, maxWidth: width)
+      else if (senses.isNotEmpty)
+        TextPiece(u, [
+          for (final (i, s) in senses.indexed) ...[
+            ('${i == 0 ? '' : '   '}${i + 1} ', number),
+            (s, body),
+          ],
+        ], maxWidth: width),
       if (!c.isWord && c.body != null)
         TextPiece.plain(u, c.body!, body, maxWidth: width),
       if (c.isWord && c.body != null) ...[
-        Rule(width, u.line(0.0011), p.muted, padding: u(0.03)),
+        Rule(width, u.line(0.0014), p.muted, padding: u(0.022)),
         TextPiece.plain(
           u,
           c.body!,
-          body.copyWith(size: 0.04, italic: true),
+          body.copyWith(size: 0.056, italic: true),
           maxWidth: width,
         ),
         if (c.footnote != null) ...[
-          Gap(u(0.012)),
+          Gap(u(0.008)),
           TextPiece.plain(
             u,
             c.footnote!,
-            body.copyWith(size: 0.036, color: p.muted),
+            body.copyWith(size: 0.048, color: p.muted),
             maxWidth: width,
           ),
         ],
       ],
-      Gap(u(0.05)),
-      Rule(width, u.line(0.0011), p.muted),
-      Gap(u(0.018)),
-      HBox([
-        TextPiece.plain(
-          u,
-          'No. ${c.labels.dayOfYear}',
-          small,
-          maxWidth: width * 0.3,
-        ),
-        TextPiece.plain(u, c.labels.longDate, small, maxWidth: width * 0.65),
-      ], spread: width),
     ]);
   });
 }
@@ -386,10 +364,13 @@ class _CursorTitle extends Piece {
 /// A terminal session: the command, the word in bold with an amber block
 /// cursor, key: value lines, a dashed rule, "> example" and the counter.
 class TerminalLayout extends StyleLayout {
-  const TerminalLayout();
+  const TerminalLayout({this.glow = false});
+
+  /// Phosphor glow: the title and the accents get a faint halo.
+  final bool glow;
 
   @override
-  String get id => 'terminal';
+  String get id => glow ? 'terminal_glow' : 'terminal';
 
   @override
   LayoutReport paint(
@@ -399,20 +380,21 @@ class TerminalLayout extends StyleLayout {
     Palette p,
     FontPair f,
     BackgroundResult bg,
-  ) => placeContent(canvas, size, bg, grow: 1.15, (u, width) {
+  ) => placeContent(canvas, size, bg, grow: 1.25, (u, width) {
     final mono = Ts(
       family: f.body,
-      size: 0.036,
+      size: 0.042,
       weight: f.bodyWeight,
       color: p.ink,
-      height: 1.4,
+      height: 1.36,
     );
     final titleStyle = Ts(
       family: f.display,
-      size: c.isWord ? 0.12 : 0.06,
+      size: c.isWord ? 0.135 : 0.068,
       weight: f.displayWeight,
       color: p.ink,
-      height: 1.15,
+      height: 1.12,
+      glow: glow ? p.accent.withValues(alpha: 0.45) : null,
     );
     final cursor = u(titleStyle.size * 0.55);
     final pairs = c.isWord
@@ -442,7 +424,7 @@ class TerminalLayout extends StyleLayout {
         'today --lang ${c.language}',
         mono.copyWith(color: p.muted),
       ),
-      Gap(u(0.04)),
+      Gap(u(0.03)),
       _CursorTitle(
         TextPiece.plain(
           u,
@@ -455,7 +437,7 @@ class TerminalLayout extends StyleLayout {
         cursor,
         p.accent,
       ),
-      Gap(u(0.035)),
+      Gap(u(0.026)),
       for (final (k, v) in pairs)
         HBox([
           SizedPiece(
@@ -474,26 +456,26 @@ class TerminalLayout extends StyleLayout {
         u.line(0.0018),
         p.muted,
         style: RuleStyle.dashed,
-        padding: u(0.03),
+        padding: u(0.024),
       ),
       if (c.body != null)
-        line('> ', p.accent, c.body!, mono.copyWith(size: 0.038)),
+        line('> ', p.accent, c.body!, mono.copyWith(size: 0.044)),
       if (c.footnote != null) ...[
         Gap(u(0.01)),
         line(
           '# ',
           p.muted,
           c.footnote!,
-          mono.copyWith(size: 0.034, color: p.muted),
+          mono.copyWith(size: 0.04, color: p.muted),
         ),
       ],
-      Gap(u(0.05)),
+      Gap(u(0.036)),
       TextPiece(u, [
         (
           '[${c.labels.dayOfYear}/${c.labels.daysInYear}]',
-          mono.copyWith(size: 0.032, color: p.accent),
+          mono.copyWith(size: 0.036, color: p.accent),
         ),
-        ('  ${c.labels.longDate}', mono.copyWith(size: 0.032, color: p.muted)),
+        ('  ${c.labels.longDate}', mono.copyWith(size: 0.036, color: p.muted)),
       ], maxWidth: width),
     ]);
   });
@@ -537,27 +519,25 @@ class CalendarLayout extends StyleLayout {
       spacing: 0.12,
       color: p.muted,
     );
+    // On a flat page the day number is the hero; on the hanging sheet it
+    // leaves room for the binding.
+    final flat = !bg.onSheet;
     final number = TextPiece.plain(
       u,
       '${c.labels.dayOfMonth}',
-      display.copyWith(size: 0.36, weight: 800, color: p.accent, height: 0.92),
-      maxWidth: width * 0.6,
+      display.copyWith(
+        size: flat ? 0.48 : 0.36,
+        weight: 800,
+        color: p.accent,
+        height: flat ? 0.88 : 0.92,
+      ),
+      maxWidth: width * (flat ? 0.66 : 0.6),
     );
     final side = width - number.width - u(0.05);
     final section = c.isWord
         ? '${c.labels.wordOfDay} · ${c.level}'
         : c.categoryLabel;
     return VBox([
-      if (!bg.onSheet) ...[
-        Drawing(width, u(0.02), (canvas, box) {
-          final paint = Paint()..color = p.decor;
-          final step = u(0.04);
-          for (var x = box.left + step / 2; x < box.right; x += step) {
-            canvas.drawCircle(Offset(x, box.center.dy), u(0.009), paint);
-          }
-        }),
-        Gap(u(0.035)),
-      ],
       HBox([
         TextPiece.plain(
           u,
@@ -898,8 +878,8 @@ class CardLayout extends StyleLayout {
   );
 }
 
-/// A notebook page: highlighted category and the date on top, then the
-/// title and the rest like a handwritten note.
+/// A notebook page: highlighted category, issue number and date on top,
+/// then the title and the rest like a handwritten note.
 class NoteLayout extends StyleLayout {
   const NoteLayout();
 
@@ -914,13 +894,13 @@ class NoteLayout extends StyleLayout {
     Palette p,
     FontPair f,
     BackgroundResult bg,
-  ) => placeContent(canvas, size, bg, grow: 1.25, (u, width) {
+  ) => placeContent(canvas, size, bg, grow: 1.3, (u, width) {
     final body = Ts(
       family: f.body,
-      size: 0.042,
+      size: 0.058,
       weight: f.bodyWeight,
       color: p.ink,
-      height: 1.35,
+      height: 1.3,
     );
     final dict = [
       if (c.ipa != null) '/${c.ipa}/',
@@ -932,29 +912,30 @@ class NoteLayout extends StyleLayout {
           TextPiece.plain(
             u,
             upperFor(c.badge, c.language),
-            body.copyWith(size: 0.03, weight: 750, spacing: 0.1, color: p.ink),
-            maxWidth: width * 0.6,
+            body.copyWith(size: 0.036, weight: 750, spacing: 0.1, color: p.ink),
+            maxWidth: width * 0.55,
           ),
           padX: u(0.016),
           padY: u(0.006),
           fill: blend(p.accent2, p.paper, 0.32),
           radius: u(0.006),
         ),
-        TextPiece.plain(
-          u,
-          c.labels.longDate,
-          body.copyWith(size: 0.03, color: p.muted),
-          maxWidth: width * 0.36,
-        ),
+        TextPiece(u, [
+          (
+            'No. ${c.labels.dayOfYear}  ',
+            body.copyWith(size: 0.036, color: p.accent, weight: 700),
+          ),
+          (c.labels.longDate, body.copyWith(size: 0.036, color: p.muted)),
+        ], maxWidth: width * 0.43),
       ], spread: width),
-      Gap(u(0.05)),
+      Gap(u(0.034)),
       () {
         final s = Ts(
           family: f.display,
-          size: c.isWord ? 0.13 : 0.07,
+          size: c.isWord ? 0.2 : 0.1,
           weight: f.displayWeight,
           color: p.ink,
-          height: 1.1,
+          height: 1.04,
         );
         return TextPiece.plain(
           u,
@@ -964,41 +945,34 @@ class NoteLayout extends StyleLayout {
         );
       }(),
       if (dict.isNotEmpty) ...[
-        Gap(u(0.01)),
+        Gap(u(0.008)),
         TextPiece.plain(
           u,
           dict,
-          body.copyWith(size: 0.036, color: p.muted, italic: true),
+          body.copyWith(size: 0.048, color: p.muted, italic: true),
           maxWidth: width,
         ),
       ],
       if (c.subtitle != null) ...[
-        Gap(u(0.025)),
+        Gap(u(0.018)),
         TextPiece(u, [
           ('— ', body.copyWith(color: p.accent, weight: 700)),
-          (c.subtitle!, body.copyWith(size: 0.046, weight: 600)),
+          (c.subtitle!, body.copyWith(size: 0.062, weight: 600)),
         ], maxWidth: width),
       ],
       if (c.body != null) ...[
-        Gap(u(0.03)),
+        Gap(u(0.022)),
         TextPiece.plain(u, c.body!, body, maxWidth: width),
       ],
       if (c.footnote != null) ...[
-        Gap(u(0.014)),
+        Gap(u(0.01)),
         TextPiece.plain(
           u,
           c.footnote!,
-          body.copyWith(size: 0.038, color: p.muted),
+          body.copyWith(size: 0.05, color: p.muted),
           maxWidth: width,
         ),
       ],
-      Gap(u(0.045)),
-      TextPiece.plain(
-        u,
-        'No. ${c.labels.dayOfYear}',
-        body.copyWith(size: 0.03, color: p.accent, weight: 700),
-        maxWidth: width,
-      ),
     ]);
   });
 }

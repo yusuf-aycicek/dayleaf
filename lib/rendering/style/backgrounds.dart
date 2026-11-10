@@ -45,7 +45,9 @@ abstract class StyleBackground {
 abstract final class StyleBackgrounds {
   static const List<StyleBackground> list = [
     PaperBackground(),
+    TearOffBackground(),
     TerminalBackground(),
+    TerminalBackground(grid: true),
     HangingSheetBackground(),
     RisoBackground(),
     TopoBackground(),
@@ -105,7 +107,43 @@ void _fill(Canvas canvas, Size size, Color color) =>
 void _outsideText(Canvas canvas, Rect textBox, double margin) =>
     canvas.clipRect(textBox.inflate(margin), clipOp: ui.ClipOp.difference);
 
-/// Off-white paper with a fine grain.
+/// Darkens the corners of the screen: transparent up to [start] of the
+/// half diagonal, [alpha] of black at the corners. Returns the darkest
+/// color it leaves inside [textBox].
+Color paintVignette(
+  Canvas canvas,
+  Size size,
+  Color base,
+  Rect textBox, {
+  double alpha = 0.16,
+  double start = 0.55,
+}) {
+  final center = size.center(Offset.zero);
+  final radius = math.max(1.0, center.distance);
+  canvas.drawRect(
+    Offset.zero & size,
+    Paint()
+      ..shader = ui.Gradient.radial(
+        center,
+        radius,
+        [_black.withValues(alpha: 0), _black.withValues(alpha: alpha)],
+        [start, 1],
+      ),
+  );
+  var far = 0.0;
+  for (final corner in [
+    textBox.topLeft,
+    textBox.topRight,
+    textBox.bottomLeft,
+    textBox.bottomRight,
+  ]) {
+    far = math.max(far, (corner - center).distance / radius);
+  }
+  final t = ((far - start) / (1 - start)).clamp(0.0, 1.0);
+  return blend(_black, base, alpha * t);
+}
+
+/// Off-white paper with a visible grain and slightly darker edges.
 class PaperBackground extends StyleBackground {
   const PaperBackground();
 
@@ -126,19 +164,125 @@ class PaperBackground extends StyleBackground {
       Offset.zero & s,
       p.paper,
       r,
-      alpha: 0.035,
+      alpha: 0.05,
+      density: 1 / 16,
       unit: s.width,
     );
+    final edge = paintVignette(c, s, p.paper, box);
+    return BackgroundResult(
+      // The grain is darkened too where the edges darken.
+      under: [
+        p.paper,
+        ...grain,
+        edge,
+        blend(_black, edge, 0.05),
+        blend(_white, edge, 0.05),
+      ],
+      contentBox: box,
+    );
+  }
+}
+
+/// A tear-off pad lying flat: warm paper with grain, the darker block the
+/// sheet is glued to with a row of punched holes along the sheet's top
+/// edge, and a perforated tear line in the empty space below the text.
+class TearOffBackground extends StyleBackground {
+  const TearOffBackground();
+
+  @override
+  String get id => 'tear_off';
+
+  @override
+  BackgroundResult paint(
+    Canvas c,
+    Size s,
+    Palette p,
+    SeededRandom r,
+    Rect box,
+  ) {
+    final w = s.width;
+    final dark = relativeLuminance(p.paper) < 0.2;
+    final shade = dark ? _white : _black;
+    _fill(c, s, p.paper);
+    final grain = paintGrain(
+      c,
+      Offset.zero & s,
+      p.paper,
+      r,
+      alpha: 0.05,
+      density: 1 / 16,
+      unit: w,
+    );
+
+    // The pad above the sheet, and the shadow the sheet's edge casts.
+    final edgeY = box.top - w * 0.085;
+    final block = blend(p.decor, p.paper, 0.55);
+    c.drawRect(Rect.fromLTWH(0, 0, w, edgeY), Paint()..color = block);
+    c.drawRect(
+      Rect.fromLTWH(0, edgeY, w, w * 0.02),
+      Paint()
+        ..shader = ui.Gradient.linear(
+          Offset(0, edgeY),
+          Offset(0, edgeY + w * 0.02),
+          [
+            shade.withValues(alpha: dark ? 0.06 : 0.12),
+            shade.withValues(alpha: 0),
+          ],
+        ),
+    );
+    c.drawLine(
+      Offset(0, edgeY),
+      Offset(w, edgeY),
+      Paint()
+        ..color = blend(p.ink, p.paper, 0.25)
+        ..strokeWidth = math.max(1, w * 0.0015),
+    );
+
+    // Punched holes: the block shows through, with a lit lower rim.
+    final holeY = edgeY + w * 0.04;
+    final hole = Paint()..color = blend(p.ink, block, dark ? 0.15 : 0.32);
+    final rim = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = math.max(1, w * 0.002)
+      ..color = blend(shade, p.paper, 0.18);
+    final step = w * 0.06;
+    final count = ((w - step) / step).floor();
+    final x0 = (w - (count - 1) * step) / 2;
+    for (var i = 0; i < count; i++) {
+      final center = Offset(x0 + i * step, holeY);
+      c.drawCircle(center, w * 0.014, hole);
+      c.drawArc(
+        Rect.fromCircle(center: center, radius: w * 0.015),
+        0.15 * math.pi,
+        0.7 * math.pi,
+        false,
+        rim,
+      );
+    }
+
+    // The tear line: fine perforation with a notch at each edge.
+    final tearY = box.bottom + (s.height - box.bottom) * 0.42;
+    final dot = Paint()..color = blend(p.ink, p.paper, 0.32);
+    for (var x = w * 0.045; x < w * 0.955; x += w * 0.016) {
+      c.drawCircle(Offset(x, tearY), w * 0.0032, dot);
+    }
+    final notch = Paint()..color = block;
+    c.drawCircle(Offset(0, tearY), w * 0.02, notch);
+    c.drawCircle(Offset(w, tearY), w * 0.02, notch);
+
     return BackgroundResult(under: [p.paper, ...grain], contentBox: box);
   }
 }
 
-/// A screen: flat color with faint scanlines and a soft vignette.
+/// A screen: flat color with very faint CRT scanlines and, with [grid], a
+/// fine grid behind them.
 class TerminalBackground extends StyleBackground {
-  const TerminalBackground();
+  const TerminalBackground({this.grid = false});
+
+  final bool grid;
 
   @override
-  String get id => 'terminal';
+  String get id => grid ? 'terminal_grid' : 'terminal';
 
   @override
   BackgroundResult paint(
@@ -149,13 +293,32 @@ class TerminalBackground extends StyleBackground {
     Rect box,
   ) {
     _fill(c, s, p.paper);
-    final step = math.max(3.0, s.width / 270);
-    final line = Paint()..color = p.decor.withValues(alpha: 0.35);
+    final under = <Color>[p.paper];
+    if (grid) {
+      final cell = s.width / 18;
+      final line = Paint()
+        ..color = p.decor
+        ..strokeWidth = math.max(1, s.width / 1080);
+      for (var x = cell / 2; x < s.width; x += cell) {
+        c.drawLine(Offset(x, 0), Offset(x, s.height), line);
+      }
+      for (var y = cell / 2; y < s.height; y += cell) {
+        c.drawLine(Offset(0, y), Offset(s.width, y), line);
+      }
+      under.add(p.decor);
+    }
+    // Scanlines: one thin line every few pixels, barely there.
+    final dark = relativeLuminance(p.paper) < 0.2;
+    final alpha = dark ? 0.22 : 0.045;
+    final step = math.max(3.0, s.width / 320);
+    final scan = Paint()..color = _black.withValues(alpha: alpha);
     for (var y = 0.0; y < s.height; y += step) {
-      c.drawRect(Rect.fromLTWH(0, y, s.width, math.max(1, step / 3)), line);
+      c.drawRect(Rect.fromLTWH(0, y, s.width, math.max(1, step / 3)), scan);
     }
     return BackgroundResult(
-      under: [p.paper, blend(p.decor, p.paper, 0.35)],
+      under: [
+        for (final u in under) ...[u, blend(_black, u, alpha)],
+      ],
       contentBox: box,
     );
   }

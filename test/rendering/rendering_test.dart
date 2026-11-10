@@ -70,7 +70,7 @@ void main() {
   }
 
   test('short text grows, long text shrinks', () {
-    final r = book.byName('calendar_classic')!;
+    final r = book.byName('riso_pink_blue')!;
     const size = Size(1080, 2400);
     final short = WallpaperContent(
       language: 'en',

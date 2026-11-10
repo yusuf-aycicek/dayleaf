@@ -19,7 +19,7 @@ yoktur.
   Kategoriler günden güne sırayla gelir.
 - **Okunaklı:** yazı, kilit ekranındaki saatin ve ana ekrandaki kısayolların üstüne
   gelmez. Sığmazsa küçülür, kontrast oranı her zaman en az 4,5:1'dir (WCAG).
-- **Stil motoru:** 10 ailede 49 stil (sözlük sayfası, terminal, takvim yaprağı, duvar
+- **Stil motoru:** 10 ailede 50 stil (sözlük sayfası, terminal, takvim yaprağı, duvar
   takvimi, risograf, topografik, yarım ton, Bauhaus, dalgalar, defter). Aileleri seçip
   her gün sürpriz bırakabilir ya da tek bir stile sabitleyebilirsiniz. Arka planlar
   tarihten ve kategoriden kodla çizilir; aynı gün hep aynı görünür. Bütün stiller
@@ -135,7 +135,8 @@ paleti ve yazı tipi çifti (kimlikleriyle), aile ve `premium`. Sonra
 `flutter test test/rendering` çalıştırın: geçersiz tarif (bilinmeyen parça, 4,5:1'in
 altında yazı kontrastı, uygulamada olmayan yazı tipi) `style_book_test.dart`'ta düşer;
 `rendering_test.dart` her tarifi üç ekran boyutunda uzun ve kısa metinle dener. Ardından
-kataloğu `--update-goldens` ile yeniden üretin.
+kataloğu `--update-goldens` ile, aile özetini `python tools/design/overview.py` ile
+yeniden üretin.
 
 ### Günlük değişimi beklemeden denemek
 
