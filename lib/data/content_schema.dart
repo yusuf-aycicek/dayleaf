@@ -8,6 +8,7 @@ abstract final class ContentLimits {
   static const int word = 24;
   static const int meaning = 100;
   static const int example = 160;
+  static const int ipa = 40;
   static const int text = 120;
   static const int detail = 220;
 }
@@ -118,6 +119,9 @@ CategoryValidation validateCategory(
         'word',
         'meaning',
         'example',
+        'syllables',
+        'ipa',
+        'pos',
         'isPremium',
       },
       ContentKind.text => {'id', 'text', 'detail', 'isPremium'},
@@ -184,6 +188,29 @@ CategoryValidation validateCategory(
           ContentLimits.example,
           required: {'en', ...languages}.toList(),
         );
+        final syllables = raw['syllables'];
+        if (syllables != null &&
+            (syllables is! String ||
+                word is! String ||
+                syllables.replaceAll('·', '') != word.trim())) {
+          error('"syllables" must be the word split with "·" (re·sil·ient)');
+        }
+        final ipa = raw['ipa'];
+        if (ipa != null &&
+            (ipa is! String ||
+                ipa.trim().isEmpty ||
+                ipa.length > ContentLimits.ipa ||
+                ipa.contains('/'))) {
+          error(
+            '"ipa" must be at most ${ContentLimits.ipa} characters, without slashes',
+          );
+        }
+        final pos = raw['pos'];
+        if (pos != null && PartOfSpeech.tryParse(pos) == null) {
+          error(
+            '"pos" must be one of ${PartOfSpeech.values.map((p) => p.name).join(', ')}',
+          );
+        }
         if (word is String) duplicateKey = _normalize(word);
         if (itemIssues.every((i) => !i.isError)) {
           item = WordItem(
@@ -194,6 +221,9 @@ CategoryValidation validateCategory(
             level: level!,
             meaning: meaning!,
             example: example!,
+            syllables: syllables as String?,
+            ipa: (ipa as String?)?.trim(),
+            partOfSpeech: PartOfSpeech.tryParse(pos),
           );
         }
       case ContentKind.text:

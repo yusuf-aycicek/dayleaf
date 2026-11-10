@@ -19,7 +19,11 @@ yoktur.
   Kategoriler günden güne sırayla gelir.
 - **Okunaklı:** yazı, kilit ekranındaki saatin ve ana ekrandaki kısayolların üstüne
   gelmez. Sığmazsa küçülür, kontrast oranı her zaman en az 4,5:1'dir (WCAG).
-- **Üç stil:** minimal, kart ve kalın yazı. Arka plan tarihten ve kategoriden üretilir.
+- **Stil motoru:** 10 ailede 49 stil (sözlük sayfası, terminal, takvim yaprağı, duvar
+  takvimi, risograf, topografik, yarım ton, Bauhaus, dalgalar, defter). Aileleri seçip
+  her gün sürpriz bırakabilir ya da tek bir stile sabitleyebilirsiniz. Arka planlar
+  tarihten ve kategoriden kodla çizilir; aynı gün hep aynı görünür. Bütün stiller
+  [katalogda](docs/design/catalog/README.md).
 - **Türkçe ve İngilizce**, Material 3, açık ve koyu tema, büyük sistem yazı boyutu.
 
 ## Ekran görüntüleri
@@ -41,7 +45,7 @@ Kod beş katmandan oluşur. Her katman yalnızca altındaki katmanlara bağlıd�
 flowchart TD
     UI["ui<br/>ekranlar, bileşenler"] --> APP["app<br/>Riverpod sağlayıcıları,<br/>DailyWallpaperService"]
     APP --> DOMAIN["domain<br/>günlük seçim, aralıklı tekrar,<br/>ayarlar, ilerleme"]
-    APP --> RENDER["rendering<br/>dart:ui tuval, şablonlar,<br/>yazı sığdırma, kontrast"]
+    APP --> RENDER["rendering<br/>dart:ui tuval, stil motoru,<br/>yazı sığdırma, kontrast"]
     APP --> PLATFORM["platform<br/>WallpaperPort, BackgroundTasks"]
     APP --> DATA["data<br/>içerik JSON, şema, AppStore"]
     DOMAIN --> DATA
@@ -77,7 +81,9 @@ Bazı tasarım kararları:
 
 Flutter (stable), Dart, Riverpod, shared_preferences, workmanager, share_plus,
 flutter_localizations ve ARB dosyaları, duvar kâğıdı köprüsü için Kotlin. Yazı tipleri
-(Manrope, Lora, JetBrains Mono, Anton; SIL Open Font License) `assets/fonts` içinde
+(Instrument Serif, Literata, Barlow Condensed, Bricolage Grotesque, IBM Plex Sans ve
+Mono, Space Grotesk, Fraunces, Manrope, Lora, JetBrains Mono, Anton ve fonetik
+simgeler için Gentium Book Plus; SIL Open Font License) `assets/fonts` içinde
 uygulamayla birlikte gelir. minSdk 24.
 
 ## Kurulum ve çalıştırma
@@ -109,7 +115,8 @@ Boyut, güvenli alan ve kontrast testleri (`test/rendering/rendering_test.dart`)
 CI'da da çalışır.
 
 **Golden testler** (`test/rendering/golden_test.dart`, etiketi `golden`) duvar
-kâğıtlarını `test/rendering/goldens/` içindeki PNG'lerle karşılaştırır. Yazı tiplerinin
+kâğıtlarını PNG'lerle karşılaştırır: her stil tarifi `docs/design/catalog/<tarif adı>.png`
+ile (stil kataloğu), paylaşım filigranı `test/rendering/goldens/` ile. Yazı tiplerinin
 piksellere dökülmesi işletim sistemine göre değiştiği için CI'da çalışmazlar. Yerelde
 şöyle çalıştırılır:
 
@@ -118,8 +125,17 @@ flutter test --tags golden                    # karşılaştır
 flutter test --tags golden --update-goldens   # bilerek yapılan değişiklikten sonra yeniden üret
 ```
 
-Güncelledikten sonra commit etmeden önce `test/rendering/goldens/` içinde değişen
-PNG'lere gözle bakın.
+Güncelledikten sonra commit etmeden önce `docs/design/catalog/` ve
+`test/rendering/goldens/` içinde değişen PNG'lere gözle bakın.
+
+### Stil eklemek
+
+Bir stil, `assets/styles/recipes.json` içinde tek satırdır: arka plan, yerleşim, renk
+paleti ve yazı tipi çifti (kimlikleriyle), aile ve `premium`. Sonra
+`flutter test test/rendering` çalıştırın: geçersiz tarif (bilinmeyen parça, 4,5:1'in
+altında yazı kontrastı, uygulamada olmayan yazı tipi) `style_book_test.dart`'ta düşer;
+`rendering_test.dart` her tarifi üç ekran boyutunda uzun ve kısa metinle dener. Ardından
+kataloğu `--update-goldens` ile yeniden üretin.
 
 ### Günlük değişimi beklemeden denemek
 

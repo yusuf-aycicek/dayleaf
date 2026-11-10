@@ -3,8 +3,10 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/painting.dart';
 
-import 'background.dart';
-import 'templates.dart';
+import '../core/seeded_random.dart';
+import 'layout.dart';
+import 'style/layouts.dart';
+import 'style/style_book.dart';
 import 'wallpaper_content.dart';
 
 class RenderedWallpaper {
@@ -21,22 +23,50 @@ class RenderedWallpaper {
 abstract final class WallpaperRenderer {
   static Future<RenderedWallpaper> render({
     required WallpaperContent content,
-    required WallpaperTemplate template,
-    required BackgroundSpec background,
+    required StyleRecipe recipe,
     required int width,
     required int height,
   }) async {
     final size = Size(width.toDouble(), height.toDouble());
     final recorder = ui.PictureRecorder();
     final canvas = Canvas(recorder, Offset.zero & size);
-    background.paint(canvas, size);
-    final report = template.paint(canvas, size, content, background);
+    final report = paint(canvas, size, content, recipe);
     final picture = recorder.endRecording();
     try {
       return RenderedWallpaper(await picture.toImage(width, height), report);
     } finally {
       picture.dispose();
     }
+  }
+
+  /// Background, then layout. The background is seeded by the day, the
+  /// category and the recipe: the same day always gives the same picture.
+  static LayoutReport paint(
+    Canvas canvas,
+    Size size,
+    WallpaperContent content,
+    StyleRecipe recipe,
+  ) {
+    final bg = recipe.background.paint(
+      canvas,
+      size,
+      recipe.palette,
+      SeededRandom.of([
+        'background',
+        content.day,
+        content.categoryId,
+        recipe.name,
+      ]),
+      WallpaperSafeArea.textBox(size),
+    );
+    return recipe.layout.paint(
+      canvas,
+      size,
+      content,
+      recipe.palette,
+      recipe.fonts,
+      bg,
+    );
   }
 
   /// A copy of [wallpaper] with a small app-name label in the bottom-right

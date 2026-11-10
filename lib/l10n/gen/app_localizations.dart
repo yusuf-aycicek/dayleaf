@@ -230,24 +230,6 @@ abstract class AppLocalizations {
   /// **'Both'**
   String get targetBoth;
 
-  /// No description provided for @templateMinimal.
-  ///
-  /// In en, this message translates to:
-  /// **'Minimal'**
-  String get templateMinimal;
-
-  /// No description provided for @templateCard.
-  ///
-  /// In en, this message translates to:
-  /// **'Card'**
-  String get templateCard;
-
-  /// No description provided for @templateBold.
-  ///
-  /// In en, this message translates to:
-  /// **'Bold type'**
-  String get templateBold;
-
   /// No description provided for @next.
   ///
   /// In en, this message translates to:
@@ -323,7 +305,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingTemplateBody.
   ///
   /// In en, this message translates to:
-  /// **'Backgrounds are generated on your phone and change every day.'**
+  /// **'Pick the style families you like, or turn off the surprise and choose one style.'**
   String get onboardingTemplateBody;
 
   /// No description provided for @onboardingApplyTitle.
@@ -535,6 +517,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Yusuf Ayçiçek\'s logo'**
   String get logoLabel;
+
+  /// Month names, comma-separated, January first. Used on wallpapers.
+  ///
+  /// In en, this message translates to:
+  /// **'January,February,March,April,May,June,July,August,September,October,November,December'**
+  String get wpMonths;
+
+  /// Weekday names, comma-separated, Monday first.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday'**
+  String get wpWeekdays;
+
+  /// No description provided for @wpLongDate.
+  ///
+  /// In en, this message translates to:
+  /// **'{month} {day}, {year}'**
+  String wpLongDate(int day, String month, int year);
+
+  /// No description provided for @wpDayOfYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Day {n} of the year'**
+  String wpDayOfYear(int n);
+
+  /// No description provided for @wpDaysLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{n} days left'**
+  String wpDaysLeft(int n);
+
+  /// No description provided for @wpWordOfDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Word of the day'**
+  String get wpWordOfDay;
+
+  /// No description provided for @wpKeyLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'level'**
+  String get wpKeyLevel;
+
+  /// No description provided for @wpKeyType.
+  ///
+  /// In en, this message translates to:
+  /// **'type'**
+  String get wpKeyType;
+
+  /// No description provided for @wpKeyMeaning.
+  ///
+  /// In en, this message translates to:
+  /// **'meaning'**
+  String get wpKeyMeaning;
+
+  /// No description provided for @wpKeyCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'category'**
+  String get wpKeyCategory;
+
+  /// No description provided for @posNoun.
+  ///
+  /// In en, this message translates to:
+  /// **'noun'**
+  String get posNoun;
+
+  /// No description provided for @posVerb.
+  ///
+  /// In en, this message translates to:
+  /// **'verb'**
+  String get posVerb;
+
+  /// No description provided for @posAdj.
+  ///
+  /// In en, this message translates to:
+  /// **'adjective'**
+  String get posAdj;
+
+  /// No description provided for @posAdv.
+  ///
+  /// In en, this message translates to:
+  /// **'adverb'**
+  String get posAdv;
+
+  /// No description provided for @posPhrase.
+  ///
+  /// In en, this message translates to:
+  /// **'phrase'**
+  String get posPhrase;
+
+  /// No description provided for @styleSurprise.
+  ///
+  /// In en, this message translates to:
+  /// **'Surprise me every day'**
+  String get styleSurprise;
+
+  /// No description provided for @styleSurpriseSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A different style every day from the families you pick'**
+  String get styleSurpriseSubtitle;
+
+  /// No description provided for @styleFamilies.
+  ///
+  /// In en, this message translates to:
+  /// **'Style families'**
+  String get styleFamilies;
+
+  /// No description provided for @styleFamiliesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick the families you like. Each day one style from them is chosen.'**
+  String get styleFamiliesHint;
+
+  /// No description provided for @styleChooseHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a style to use it every day.'**
+  String get styleChooseHint;
+
+  /// No description provided for @styleKeepOne.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep at least one family.'**
+  String get styleKeepOne;
+
+  /// No description provided for @styleSummarySurprise.
+  ///
+  /// In en, this message translates to:
+  /// **'Surprise · {n} families'**
+  String styleSummarySurprise(int n);
+
+  /// No description provided for @styleSummaryAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Surprise · all families'**
+  String get styleSummaryAll;
+
+  /// No description provided for @styleNumbered.
+  ///
+  /// In en, this message translates to:
+  /// **'{family} {n}'**
+  String styleNumbered(String family, int n);
 }
 
 class _AppLocalizationsDelegate

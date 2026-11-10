@@ -1,6 +1,7 @@
 import 'package:dailywall/app/app.dart';
 import 'package:dailywall/app/daily_wallpaper_service.dart';
 import 'package:dailywall/app/providers.dart';
+import 'package:dailywall/app/style_repository.dart';
 import 'package:dailywall/core/app_config.dart';
 import 'package:dailywall/core/clock.dart';
 import 'package:dailywall/data/app_store.dart';
@@ -22,6 +23,14 @@ import '../helpers/fakes.dart';
 
 void main() {
   late AppStore store;
+  // Loaded once outside the fake-async test zone; a bundle load started
+  // inside one test can never finish in the next.
+  final styles = StyleRepository(languages: const ['en', 'tr']);
+
+  setUpAll(() async {
+    TestWidgetsFlutterBinding.ensureInitialized();
+    await styles.load();
+  });
 
   setUp(() {
     SharedPreferencesAsyncPlatform.instance =
@@ -55,6 +64,7 @@ void main() {
       port: FakePort(),
       clock: FixedClock(DateTime(2026, 11, 6, 9)),
       systemLanguage: 'en',
+      styles: styles,
     );
     await tester.pumpWidget(
       ProviderScope(
@@ -125,6 +135,38 @@ void main() {
       await next();
       await tester.scrollUntilVisible(find.text('Lock screen'), 100);
       expect(find.text('Lock screen'), findsOneWidget);
+    });
+
+    testWidgets('the style page lays out and saves choices at $scale', (
+      tester,
+    ) async {
+      phone(tester, textScale: scale);
+      await store.saveSettings(
+        const UserSettings(
+          onboardingComplete: true,
+          categoryIds: ['english_words'],
+        ),
+      );
+      await show(tester, const SettingsScreen());
+      expect(find.text('Surprise · all families'), findsOneWidget);
+      await tester.tap(find.text('Style'));
+      await settle(tester);
+      expect(find.text('Surprise me every day'), findsOneWidget);
+      expect(find.byType(CheckboxListTile), findsWidgets);
+
+      await tester.tap(find.byType(CheckboxListTile).first);
+      await settle(tester);
+      expect(
+        (await store.loadSettings()).styleFamilies,
+        isNot(contains('dictionary')),
+      );
+
+      await tester.tap(find.byType(Switch));
+      await settle(tester);
+      expect((await store.loadSettings()).styleSurprise, isFalse);
+      expect(find.byType(CheckboxListTile), findsNothing);
+      await tester.drag(find.byType(ListView).first, const Offset(0, -3000));
+      await settle(tester);
     });
 
     testWidgets('settings and About lay out at text scale $scale', (

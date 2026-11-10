@@ -17,8 +17,11 @@ no internet permission, no account, no ads and no analytics.
   Categories take turns day by day.
 - **Readable:** text stays clear of the lock-screen clock and the home-screen
   shortcuts. It shrinks to fit and always meets a WCAG contrast ratio of 4.5:1.
-- **Three styles:** minimal, card and bold type. Backgrounds are generated from the
-  date and the category.
+- **Style engine:** 49 styles in 10 families (dictionary page, terminal, calendar
+  page, wall calendar, risograph, topographic, halftone, Bauhaus, waves, notebook).
+  Pick families and let it surprise you every day, or pin one style. Backgrounds are
+  drawn in code from the date and the category, so the same day always looks the
+  same. See every style in the [catalog](docs/design/catalog/README.md).
 - **Turkish and English**, Material 3, light and dark theme, large system fonts.
 
 ## Screenshots
@@ -39,7 +42,7 @@ The code has five layers, and each layer depends only on the layers below it.
 flowchart TD
     UI["ui<br/>screens, widgets"] --> APP["app<br/>Riverpod providers,<br/>DailyWallpaperService"]
     APP --> DOMAIN["domain<br/>daily selection, spaced repetition,<br/>settings, progress"]
-    APP --> RENDER["rendering<br/>dart:ui canvas, templates,<br/>text fit, contrast"]
+    APP --> RENDER["rendering<br/>dart:ui canvas, style engine,<br/>text fit, contrast"]
     APP --> PLATFORM["platform<br/>WallpaperPort, BackgroundTasks"]
     APP --> DATA["data<br/>content JSON, schema, AppStore"]
     DOMAIN --> DATA
@@ -75,8 +78,9 @@ Some design choices:
 
 Flutter (stable), Dart, Riverpod, shared_preferences, workmanager, share_plus,
 flutter_localizations with ARB files, Kotlin for the wallpaper bridge. Fonts
-(Manrope, Lora, JetBrains Mono, Anton; SIL Open Font License) are bundled in
-`assets/fonts`. minSdk 24.
+(Instrument Serif, Literata, Barlow Condensed, Bricolage Grotesque, IBM Plex Sans and
+Mono, Space Grotesk, Fraunces, Manrope, Lora, JetBrains Mono, Anton, and Gentium Book
+Plus for phonetic symbols; SIL Open Font License) are bundled in `assets/fonts`. minSdk 24.
 
 ## Setup and run
 
@@ -106,7 +110,8 @@ flutter test --exclude-tags golden     # what CI runs
 CI also runs the size, safe-area and contrast tests (`test/rendering/rendering_test.dart`).
 
 **Golden tests** (`test/rendering/golden_test.dart`, tagged `golden`) compare
-wallpapers against PNG files in `test/rendering/goldens/`. Font rasterization differs
+every style recipe against `docs/design/catalog/<recipe name>.png` (the style
+catalog) and the share watermark against `test/rendering/goldens/`. Font rasterization differs
 between operating systems, so CI does not run them. Run them locally:
 
 ```bash
@@ -114,8 +119,17 @@ flutter test --tags golden                    # compare
 flutter test --tags golden --update-goldens   # regenerate after an intended change
 ```
 
-After updating, look at the changed PNGs in `test/rendering/goldens/` before you
-commit them.
+After updating, look at the changed PNGs in `docs/design/catalog/` and
+`test/rendering/goldens/` before you commit them.
+
+### Adding a style
+
+A style is one line in `assets/styles/recipes.json`: a background, a layout, a palette
+and a font pair (all by id), the family, and `premium`. Run
+`flutter test test/rendering`: invalid recipes (an unknown part, text contrast below
+4.5:1, a font that is not bundled) fail `style_book_test.dart`, and
+`rendering_test.dart` checks every recipe at three screen sizes with long and short
+texts. Then regenerate the catalog with `--update-goldens`.
 
 ### Testing the daily change without waiting
 

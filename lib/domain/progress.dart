@@ -53,6 +53,13 @@ class ProgressState {
     lastApplied: lastApplied ?? this.lastApplied,
   );
 
+  /// Records the style of [day] in its history entry, if there is one.
+  ProgressState withStyle(int day, String? styleName) => copyWith(
+    history: [
+      for (final h in history) h.day == day ? h.withStyle(styleName) : h,
+    ],
+  );
+
   ProgressState toggleFavorite(String itemId) {
     final next = {...favorites};
     if (!next.remove(itemId)) next.add(itemId);
@@ -110,11 +117,24 @@ class HistoryEntry {
     required this.itemId,
     required this.categoryId,
     this.isReview = false,
+    this.styleName,
   });
 
   final int day;
   final String itemId;
   final String categoryId;
+
+  /// The style recipe of that day, so the day keeps its look and
+  /// "Surprise me" never repeats yesterday's.
+  final String? styleName;
+
+  HistoryEntry withStyle(String? name) => HistoryEntry(
+    day: day,
+    itemId: itemId,
+    categoryId: categoryId,
+    isReview: isReview,
+    styleName: name,
+  );
 
   /// True when the item came back because of "show again".
   final bool isReview;
@@ -124,6 +144,7 @@ class HistoryEntry {
     'itemId': itemId,
     'categoryId': categoryId,
     if (isReview) 'isReview': true,
+    if (styleName != null) 'styleName': styleName,
   };
 
   factory HistoryEntry.fromJson(Map<String, Object?> json) => HistoryEntry(
@@ -131,6 +152,7 @@ class HistoryEntry {
     itemId: json['itemId'] as String,
     categoryId: json['categoryId'] as String,
     isReview: json['isReview'] as bool? ?? false,
+    styleName: json['styleName'] as String?,
   );
 }
 
@@ -185,7 +207,7 @@ class AppliedWallpaper {
 
   final int day;
 
-  /// Item, template, target and language: changing any of them means the
+  /// Item, style, target and language: changing any of them means the
   /// wallpaper must be rendered again.
   final String key;
 

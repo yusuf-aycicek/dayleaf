@@ -9,6 +9,7 @@ import '../domain/progress.dart';
 import '../domain/spaced_repetition.dart';
 import '../domain/user_settings.dart';
 import '../platform/background_tasks.dart';
+import '../rendering/style/style_book.dart';
 import '../rendering/wallpaper_renderer.dart';
 import 'daily_wallpaper_service.dart';
 
@@ -26,6 +27,10 @@ final scheduleDailyProvider = Provider<Future<void> Function(bool enabled)>(
 
 final contentLibraryProvider = FutureProvider<ContentLibrary>(
   (ref) => ref.watch(serviceProvider).content.load(),
+);
+
+final styleBookProvider = FutureProvider<StyleBook>(
+  (ref) => ref.watch(serviceProvider).styles.load(),
 );
 
 class SettingsNotifier extends AsyncNotifier<UserSettings> {

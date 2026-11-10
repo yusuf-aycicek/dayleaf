@@ -80,15 +80,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get targetBoth => 'Both';
 
   @override
-  String get templateMinimal => 'Minimal';
-
-  @override
-  String get templateCard => 'Card';
-
-  @override
-  String get templateBold => 'Bold type';
-
-  @override
   String get next => 'Next';
 
   @override
@@ -130,7 +121,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingTemplateBody =>
-      'Backgrounds are generated on your phone and change every day.';
+      'Pick the style families you like, or turn off the surprise and choose one style.';
 
   @override
   String get onboardingApplyTitle => 'All set';
@@ -241,4 +232,90 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logoLabel => 'Yusuf Ayçiçek\'s logo';
+
+  @override
+  String get wpMonths =>
+      'January,February,March,April,May,June,July,August,September,October,November,December';
+
+  @override
+  String get wpWeekdays =>
+      'Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday';
+
+  @override
+  String wpLongDate(int day, String month, int year) {
+    return '$month $day, $year';
+  }
+
+  @override
+  String wpDayOfYear(int n) {
+    return 'Day $n of the year';
+  }
+
+  @override
+  String wpDaysLeft(int n) {
+    return '$n days left';
+  }
+
+  @override
+  String get wpWordOfDay => 'Word of the day';
+
+  @override
+  String get wpKeyLevel => 'level';
+
+  @override
+  String get wpKeyType => 'type';
+
+  @override
+  String get wpKeyMeaning => 'meaning';
+
+  @override
+  String get wpKeyCategory => 'category';
+
+  @override
+  String get posNoun => 'noun';
+
+  @override
+  String get posVerb => 'verb';
+
+  @override
+  String get posAdj => 'adjective';
+
+  @override
+  String get posAdv => 'adverb';
+
+  @override
+  String get posPhrase => 'phrase';
+
+  @override
+  String get styleSurprise => 'Surprise me every day';
+
+  @override
+  String get styleSurpriseSubtitle =>
+      'A different style every day from the families you pick';
+
+  @override
+  String get styleFamilies => 'Style families';
+
+  @override
+  String get styleFamiliesHint =>
+      'Pick the families you like. Each day one style from them is chosen.';
+
+  @override
+  String get styleChooseHint => 'Tap a style to use it every day.';
+
+  @override
+  String get styleKeepOne => 'Keep at least one family.';
+
+  @override
+  String styleSummarySurprise(int n) {
+    return 'Surprise · $n families';
+  }
+
+  @override
+  String get styleSummaryAll => 'Surprise · all families';
+
+  @override
+  String styleNumbered(String family, int n) {
+    return '$family $n';
+  }
 }

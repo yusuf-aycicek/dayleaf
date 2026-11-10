@@ -11,7 +11,7 @@ import '../../platform/background_tasks.dart';
 import '../labels.dart';
 import '../onboarding/onboarding_screen.dart' show toggleCategory;
 import '../widgets/choice_tiles.dart';
-import '../widgets/template_preview.dart';
+import '../widgets/style_picker.dart';
 import 'about_screen.dart';
 
 class SettingsScreen extends ConsumerWidget {
@@ -89,24 +89,20 @@ class SettingsScreen extends ConsumerWidget {
           ListTile(
             leading: const Icon(Icons.style_outlined),
             title: Text(l10n.settingsTemplate),
-            subtitle: Text(l10n.template(settings.templateId)),
-            onTap: () => showModalBottomSheet<void>(
-              context: context,
-              showDragHandle: true,
-              isScrollControlled: true,
-              builder: (sheet) => SafeArea(
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-                  child: Consumer(
+            subtitle: Text(
+              styleSummary(l10n, ref.watch(styleBookProvider).value, settings),
+            ),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (_) => Scaffold(
+                  appBar: AppBar(title: Text(l10n.settingsTemplate)),
+                  body: Consumer(
                     builder: (context, ref, _) {
                       final s = ref.watch(settingsProvider).value ?? settings;
-                      return TemplatePicker(
-                        selected: s.templateId,
-                        settings: s,
-                        onSelected: (id) {
-                          update((x) => x.copyWith(templateId: id));
-                          Navigator.pop(sheet);
-                        },
+                      return ListView(
+                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
+                        children: [StylePicker(settings: s, onChanged: update)],
                       );
                     },
                   ),

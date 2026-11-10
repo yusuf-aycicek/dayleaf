@@ -1,0 +1,154 @@
+{
+  "families": [
+    {"id": "dictionary", "name": {"en": "Dictionary", "tr": "Sözlük"}, "fits": ["english_words"]},
+    {"id": "terminal", "name": {"en": "Terminal", "tr": "Terminal"}, "fits": ["software_tips", "english_words"]},
+    {"id": "calendar", "name": {"en": "Calendar page", "tr": "Takvim yaprağı"}, "fits": ["motivation", "general_knowledge", "english_words"]},
+    {"id": "wall_calendar", "name": {"en": "Wall calendar", "tr": "Duvar takvimi"}, "fits": ["motivation", "general_knowledge", "english_words"]},
+    {"id": "riso", "name": {"en": "Risograph", "tr": "Risograf"}, "fits": ["motivation", "general_knowledge"]},
+    {"id": "topo", "name": {"en": "Topographic", "tr": "Topografik"}, "fits": ["software_tips", "general_knowledge"]},
+    {"id": "halftone", "name": {"en": "Halftone", "tr": "Raster"}, "fits": ["motivation", "general_knowledge"]},
+    {"id": "bauhaus", "name": {"en": "Bauhaus", "tr": "Bauhaus"}, "fits": ["motivation", "general_knowledge", "software_tips"]},
+    {"id": "waves", "name": {"en": "Waves", "tr": "Dalgalar"}, "fits": ["motivation", "english_words"]},
+    {"id": "notebook", "name": {"en": "Notebook", "tr": "Defter"}, "fits": ["english_words", "general_knowledge", "software_tips"]}
+  ],
+
+  "palettes": [
+    {"id": "dict_ivory", "ground": "#F4EFE4", "paper": "#F4EFE4", "ink": "#1C1A17", "muted": "#5F584E", "accent": "#B0281F", "accent2": "#2F5D8A", "decor": "#D8CFBF"},
+    {"id": "dict_sepia", "ground": "#EADFC8", "paper": "#EADFC8", "ink": "#2A2118", "muted": "#5A4C3C", "accent": "#932810", "accent2": "#6B4E2E", "decor": "#CDBD9C"},
+    {"id": "dict_night", "ground": "#16181D", "paper": "#16181D", "ink": "#ECE6DA", "muted": "#A8A296", "accent": "#FF7A6B", "accent2": "#6E8BB5", "decor": "#2A2E36"},
+    {"id": "dict_sage", "ground": "#E6EBE0", "paper": "#E6EBE0", "ink": "#18221B", "muted": "#4E5B51", "accent": "#A3302A", "accent2": "#3F6B4F", "decor": "#C9D3C2"},
+    {"id": "dict_rose", "ground": "#F6E9E6", "paper": "#F6E9E6", "ink": "#2A1A1C", "muted": "#66505A", "accent": "#A8233F", "accent2": "#6B3B5A", "decor": "#E2CFCB"},
+    {"id": "dict_slate", "ground": "#ECEEF1", "paper": "#ECEEF1", "ink": "#15191F", "muted": "#4F5763", "accent": "#2A55B0", "accent2": "#B0281F", "decor": "#D2D7DF"},
+
+    {"id": "term_amber", "ground": "#101010", "paper": "#101010", "ink": "#EDEDED", "muted": "#9A9A9A", "accent": "#F2A900", "accent2": "#F2A900", "decor": "#1C1C1C"},
+    {"id": "term_phosphor", "ground": "#0B140D", "paper": "#0B140D", "ink": "#C8F7C5", "muted": "#6FAE73", "accent": "#39FF88", "accent2": "#39FF88", "decor": "#12221A"},
+    {"id": "term_ocean", "ground": "#0F1720", "paper": "#0F1720", "ink": "#E3EAF2", "muted": "#8EA0B4", "accent": "#5CC8FF", "accent2": "#5CC8FF", "decor": "#17232F"},
+    {"id": "term_dracula", "ground": "#1E1B26", "paper": "#1E1B26", "ink": "#F1EEF8", "muted": "#A59CBF", "accent": "#FF79C6", "accent2": "#BD93F9", "decor": "#292537"},
+    {"id": "term_paper", "ground": "#F4F1EA", "paper": "#F4F1EA", "ink": "#1D1D1D", "muted": "#5C5C5C", "accent": "#B04500", "accent2": "#B04500", "decor": "#E8E3D8"},
+    {"id": "term_solar", "ground": "#002B36", "paper": "#002B36", "ink": "#EEE8D5", "muted": "#93A1A1", "accent": "#D4A20A", "accent2": "#2AA198", "decor": "#073642"},
+
+    {"id": "cal_classic", "ground": "#F5F1E8", "paper": "#F5F1E8", "ink": "#1B1B1B", "muted": "#5D5A54", "accent": "#C0261F", "accent2": "#7A1F2B", "decor": "#CFC8BA"},
+    {"id": "cal_navy", "ground": "#F2F2EE", "paper": "#F2F2EE", "ink": "#15202E", "muted": "#556070", "accent": "#1F4FA8", "accent2": "#15202E", "decor": "#C9CED6"},
+    {"id": "cal_forest", "ground": "#F3F0E6", "paper": "#F3F0E6", "ink": "#1A2219", "muted": "#535C50", "accent": "#2E6B3A", "accent2": "#2E6B3A", "decor": "#CBCDBD"},
+    {"id": "cal_ink", "ground": "#FAFAF7", "paper": "#FAFAF7", "ink": "#111111", "muted": "#5A5A5A", "accent": "#BF3A12", "accent2": "#111111", "decor": "#D5D5D0"},
+    {"id": "cal_mustard", "ground": "#F6EED9", "paper": "#F6EED9", "ink": "#262017", "muted": "#5E5543", "accent": "#9A4216", "accent2": "#C99A2E", "decor": "#D9CBA6"},
+
+    {"id": "wall_walnut", "ground": "#2B211C", "paper": "#F4EEE2", "ink": "#1B1A18", "muted": "#5B554C", "accent": "#A3221B", "accent2": "#6E1423", "decor": "#CFC6B6"},
+    {"id": "wall_slate", "ground": "#1F2428", "paper": "#F2F0EA", "ink": "#1A1C1E", "muted": "#575A5E", "accent": "#A12A23", "accent2": "#5B1A24", "decor": "#CDCBC4"},
+    {"id": "wall_olive", "ground": "#262B1E", "paper": "#F3EFE3", "ink": "#1E2119", "muted": "#585A4E", "accent": "#933419", "accent2": "#3E4A2A", "decor": "#CFCBB9"},
+    {"id": "wall_navy", "ground": "#141B2B", "paper": "#F5F2EA", "ink": "#151A26", "muted": "#545A68", "accent": "#A51F28", "accent2": "#1E2F57", "decor": "#CECBC4"},
+    {"id": "wall_plum", "ground": "#2A1E2A", "paper": "#F4EDE6", "ink": "#221A20", "muted": "#5E525A", "accent": "#921C3A", "accent2": "#5A1E3F", "decor": "#D3C9C3"},
+
+    {"id": "riso_pink_blue", "ground": "#F3EFE6", "paper": "#F3EFE6", "ink": "#141414", "muted": "#4D4A45", "accent": "#FF5C8A", "accent2": "#3D7DD8", "decor": "#DDD6C9"},
+    {"id": "riso_orange_teal", "ground": "#F2EEE3", "paper": "#F2EEE3", "ink": "#151515", "muted": "#4D4A43", "accent": "#FF6B35", "accent2": "#1B998B", "decor": "#DCD5C6"},
+    {"id": "riso_yellow_violet", "ground": "#F5F1E7", "paper": "#F5F1E7", "ink": "#16131C", "muted": "#4E4956", "accent": "#FFC93C", "accent2": "#6A4C93", "decor": "#DED8CB"},
+    {"id": "riso_green_red", "ground": "#F1EFE6", "paper": "#F1EFE6", "ink": "#121512", "muted": "#4A4E48", "accent": "#00A878", "accent2": "#FE5F55", "decor": "#DAD7CB"},
+    {"id": "riso_blue_pink", "ground": "#EEF0F2", "paper": "#EEF0F2", "ink": "#11151C", "muted": "#4A5260", "accent": "#6AAEFF", "accent2": "#FF5C8A", "decor": "#D5D9DF"},
+
+    {"id": "topo_forest", "ground": "#13261D", "paper": "#0B1A13", "ink": "#EAF1EC", "muted": "#9FB5A8", "accent": "#E9C46A", "accent2": "#2F5442", "decor": "#2F5442"},
+    {"id": "topo_ocean", "ground": "#0F2233", "paper": "#081521", "ink": "#E7EEF5", "muted": "#9DB0C2", "accent": "#F4A261", "accent2": "#24435E", "decor": "#24435E"},
+    {"id": "topo_desert", "ground": "#3A2618", "paper": "#24170E", "ink": "#F5EBDD", "muted": "#C4AE94", "accent": "#F2C14E", "accent2": "#5C3E28", "decor": "#5C3E28"},
+    {"id": "topo_plum", "ground": "#2A1730", "paper": "#1A0E1F", "ink": "#F4EAF6", "muted": "#BCA5C4", "accent": "#F7B2D9", "accent2": "#4A2C55", "decor": "#4A2C55"},
+    {"id": "topo_charcoal", "ground": "#1C1E21", "paper": "#111214", "ink": "#ECEEF0", "muted": "#A3A9B0", "accent": "#7FD1B9", "accent2": "#363A40", "decor": "#363A40"},
+
+    {"id": "half_red", "ground": "#F4F0E8", "paper": "#F4F0E8", "ink": "#151515", "muted": "#555049", "accent": "#D7263D", "accent2": "#D7263D", "decor": "#DCD5C8"},
+    {"id": "half_blue", "ground": "#EEF1F6", "paper": "#EEF1F6", "ink": "#101624", "muted": "#4C5568", "accent": "#2453D4", "accent2": "#2453D4", "decor": "#D3DAE6"},
+    {"id": "half_yellow", "ground": "#F5E24A", "paper": "#F5E24A", "ink": "#151515", "muted": "#4A4416", "accent": "#151515", "accent2": "#151515", "decor": "#E2CF36"},
+    {"id": "half_teal", "ground": "#10292B", "paper": "#10292B", "ink": "#EAF4F2", "muted": "#A3C3BF", "accent": "#2EC4B6", "accent2": "#2EC4B6", "decor": "#1A3B3E"},
+
+    {"id": "bau_classic", "ground": "#F1EADB", "paper": "#F1EADB", "ink": "#1A1A1A", "muted": "#4F4A42", "accent": "#D7362B", "accent2": "#1F4E9E", "decor": "#F2B705"},
+    {"id": "bau_dark", "ground": "#1B1B1D", "paper": "#1B1B1D", "ink": "#F1EADB", "muted": "#B3AC9F", "accent": "#E94F37", "accent2": "#3F88C5", "decor": "#F6AE2D"},
+    {"id": "bau_pastel", "ground": "#F7F3EC", "paper": "#F7F3EC", "ink": "#22223B", "muted": "#4A4E69", "accent": "#F2A7A0", "accent2": "#9BC1BC", "decor": "#F4D58D"},
+    {"id": "bau_earth", "ground": "#EFE6D2", "paper": "#EFE6D2", "ink": "#2B2118", "muted": "#5E4E3C", "accent": "#B5532E", "accent2": "#3D5A40", "decor": "#D9A441"},
+
+    {"id": "wave_sea", "ground": "#EAF2F4", "paper": "#EAF2F4", "ink": "#10222B", "muted": "#4A6270", "accent": "#0B5F7A", "accent2": "#7CC6D6", "decor": "#C9DEE4"},
+    {"id": "wave_sunset", "ground": "#FBEDE3", "paper": "#FBEDE3", "ink": "#2B1A14", "muted": "#6A4E40", "accent": "#B4441E", "accent2": "#F4A261", "decor": "#F1D3C1"},
+    {"id": "wave_night", "ground": "#0E1630", "paper": "#0E1630", "ink": "#EEF0F8", "muted": "#A4ABC8", "accent": "#FFD166", "accent2": "#3A4E8C", "decor": "#1E2A50"},
+    {"id": "wave_mint", "ground": "#EAF5EE", "paper": "#EAF5EE", "ink": "#13261B", "muted": "#4B6354", "accent": "#1E7A4C", "accent2": "#9ED9B4", "decor": "#CDE6D6"},
+
+    {"id": "note_white", "ground": "#FBFAF6", "paper": "#FBFAF6", "ink": "#1B2433", "muted": "#4A5464", "accent": "#982A1D", "accent2": "#E8A0A0", "decor": "#C9D8EA"},
+    {"id": "note_cream", "ground": "#F6F0DF", "paper": "#F6F0DF", "ink": "#2A2418", "muted": "#564D37", "accent": "#8E3518", "accent2": "#E2B04A", "decor": "#D9CDAE"},
+    {"id": "note_grid_white", "ground": "#F9F9F7", "paper": "#F9F9F7", "ink": "#1C1C1C", "muted": "#555555", "accent": "#2155C4", "accent2": "#8DB1F2", "decor": "#D4DCE8"},
+    {"id": "note_grid_green", "ground": "#EEF3EA", "paper": "#EEF3EA", "ink": "#1B2A1E", "muted": "#46544A", "accent": "#255A34", "accent2": "#A9D18E", "decor": "#CBD9C4"},
+    {"id": "note_board", "ground": "#1F2A24", "paper": "#1F2A24", "ink": "#EEF2EC", "muted": "#A9B8AE", "accent": "#F4D35E", "accent2": "#4E6B5B", "decor": "#2F3E35"}
+  ],
+
+  "fonts": [
+    {"id": "instrument_literata", "display": "InstrumentSerif", "displayWeight": 400, "body": "Literata", "bodyWeight": 400},
+    {"id": "fraunces_literata", "display": "Fraunces", "displayWeight": 560, "body": "Literata", "bodyWeight": 400},
+    {"id": "lora_literata", "display": "Lora", "displayWeight": 600, "body": "Literata", "bodyWeight": 400},
+    {"id": "jetbrains", "display": "JetBrainsMono", "displayWeight": 800, "body": "JetBrainsMono", "bodyWeight": 400},
+    {"id": "plexmono", "display": "IBMPlexMono", "displayWeight": 600, "body": "IBMPlexMono", "bodyWeight": 400, "mono": "IBMPlexMono"},
+    {"id": "barlow_literata", "display": "BarlowCondensed", "displayWeight": 800, "body": "Literata", "bodyWeight": 400},
+    {"id": "barlow_plex", "display": "BarlowCondensed", "displayWeight": 800, "body": "IBMPlexSans", "bodyWeight": 400, "mono": "IBMPlexMono"},
+    {"id": "bricolage", "display": "BricolageGrotesque", "displayWeight": 800, "body": "Manrope", "bodyWeight": 500},
+    {"id": "bricolage_space", "display": "BricolageGrotesque", "displayWeight": 800, "body": "SpaceGrotesk", "bodyWeight": 500},
+    {"id": "anton_manrope", "display": "Anton", "displayWeight": 400, "body": "Manrope", "bodyWeight": 500},
+    {"id": "plex", "display": "IBMPlexSans", "displayWeight": 600, "body": "IBMPlexSans", "bodyWeight": 400, "mono": "IBMPlexMono"},
+    {"id": "space_plex", "display": "SpaceGrotesk", "displayWeight": 650, "body": "IBMPlexSans", "bodyWeight": 400, "mono": "IBMPlexMono"},
+    {"id": "space", "display": "SpaceGrotesk", "displayWeight": 700, "body": "SpaceGrotesk", "bodyWeight": 450},
+    {"id": "fraunces_manrope", "display": "Fraunces", "displayWeight": 620, "body": "Manrope", "bodyWeight": 450},
+    {"id": "lora_manrope", "display": "Lora", "displayWeight": 600, "body": "Manrope", "bodyWeight": 450}
+  ],
+
+  "recipes": [
+    {"name": "dictionary_ivory", "family": "dictionary", "background": "paper", "layout": "dictionary", "palette": "dict_ivory", "fonts": "instrument_literata", "premium": false},
+    {"name": "dictionary_sepia", "family": "dictionary", "background": "paper", "layout": "dictionary", "palette": "dict_sepia", "fonts": "fraunces_literata", "premium": false},
+    {"name": "dictionary_night", "family": "dictionary", "background": "paper", "layout": "dictionary", "palette": "dict_night", "fonts": "instrument_literata", "premium": false},
+    {"name": "dictionary_sage", "family": "dictionary", "background": "paper", "layout": "dictionary", "palette": "dict_sage", "fonts": "lora_literata", "premium": false},
+    {"name": "dictionary_rose", "family": "dictionary", "background": "paper", "layout": "dictionary", "palette": "dict_rose", "fonts": "instrument_literata", "premium": false},
+    {"name": "dictionary_slate", "family": "dictionary", "background": "grid", "layout": "dictionary", "palette": "dict_slate", "fonts": "fraunces_literata", "premium": false},
+
+    {"name": "terminal_amber", "family": "terminal", "background": "terminal", "layout": "terminal", "palette": "term_amber", "fonts": "jetbrains", "premium": false},
+    {"name": "terminal_phosphor", "family": "terminal", "background": "terminal", "layout": "terminal", "palette": "term_phosphor", "fonts": "plexmono", "premium": false},
+    {"name": "terminal_ocean", "family": "terminal", "background": "terminal", "layout": "terminal", "palette": "term_ocean", "fonts": "jetbrains", "premium": false},
+    {"name": "terminal_dracula", "family": "terminal", "background": "terminal", "layout": "terminal", "palette": "term_dracula", "fonts": "jetbrains", "premium": false},
+    {"name": "terminal_paper", "family": "terminal", "background": "terminal", "layout": "terminal", "palette": "term_paper", "fonts": "plexmono", "premium": false},
+    {"name": "terminal_solar", "family": "terminal", "background": "terminal", "layout": "terminal", "palette": "term_solar", "fonts": "plexmono", "premium": false},
+
+    {"name": "calendar_classic", "family": "calendar", "background": "paper", "layout": "calendar", "palette": "cal_classic", "fonts": "barlow_literata", "premium": false},
+    {"name": "calendar_navy", "family": "calendar", "background": "paper", "layout": "calendar", "palette": "cal_navy", "fonts": "barlow_plex", "premium": false},
+    {"name": "calendar_forest", "family": "calendar", "background": "paper", "layout": "calendar", "palette": "cal_forest", "fonts": "barlow_literata", "premium": false},
+    {"name": "calendar_ink", "family": "calendar", "background": "paper", "layout": "calendar", "palette": "cal_ink", "fonts": "barlow_plex", "premium": false},
+    {"name": "calendar_mustard", "family": "calendar", "background": "paper", "layout": "calendar", "palette": "cal_mustard", "fonts": "barlow_literata", "premium": false},
+
+    {"name": "wall_calendar_walnut", "family": "wall_calendar", "background": "hanging_sheet", "layout": "calendar", "palette": "wall_walnut", "fonts": "barlow_literata", "premium": false},
+    {"name": "wall_calendar_slate", "family": "wall_calendar", "background": "hanging_sheet", "layout": "calendar", "palette": "wall_slate", "fonts": "barlow_plex", "premium": false},
+    {"name": "wall_calendar_olive", "family": "wall_calendar", "background": "hanging_sheet", "layout": "calendar", "palette": "wall_olive", "fonts": "barlow_literata", "premium": false},
+    {"name": "wall_calendar_navy", "family": "wall_calendar", "background": "hanging_sheet", "layout": "calendar", "palette": "wall_navy", "fonts": "barlow_plex", "premium": false},
+    {"name": "wall_calendar_plum", "family": "wall_calendar", "background": "hanging_sheet", "layout": "calendar", "palette": "wall_plum", "fonts": "barlow_literata", "premium": false},
+
+    {"name": "riso_pink_blue", "family": "riso", "background": "riso", "layout": "poster_offset", "palette": "riso_pink_blue", "fonts": "bricolage", "premium": false},
+    {"name": "riso_orange_teal", "family": "riso", "background": "riso", "layout": "poster_offset", "palette": "riso_orange_teal", "fonts": "bricolage_space", "premium": false},
+    {"name": "riso_yellow_violet", "family": "riso", "background": "riso", "layout": "poster_offset", "palette": "riso_yellow_violet", "fonts": "bricolage", "premium": false},
+    {"name": "riso_green_red", "family": "riso", "background": "riso", "layout": "poster_offset", "palette": "riso_green_red", "fonts": "anton_manrope", "premium": false},
+    {"name": "riso_blue_pink", "family": "riso", "background": "riso", "layout": "poster_offset", "palette": "riso_blue_pink", "fonts": "bricolage_space", "premium": false},
+
+    {"name": "topo_forest", "family": "topo", "background": "topo", "layout": "card", "palette": "topo_forest", "fonts": "plex", "premium": false},
+    {"name": "topo_ocean", "family": "topo", "background": "topo", "layout": "card", "palette": "topo_ocean", "fonts": "plex", "premium": false},
+    {"name": "topo_desert", "family": "topo", "background": "topo", "layout": "card", "palette": "topo_desert", "fonts": "space_plex", "premium": false},
+    {"name": "topo_plum", "family": "topo", "background": "topo", "layout": "card", "palette": "topo_plum", "fonts": "space_plex", "premium": false},
+    {"name": "topo_charcoal", "family": "topo", "background": "topo", "layout": "card", "palette": "topo_charcoal", "fonts": "plex", "premium": false},
+
+    {"name": "halftone_red", "family": "halftone", "background": "halftone", "layout": "poster", "palette": "half_red", "fonts": "anton_manrope", "premium": false},
+    {"name": "halftone_blue", "family": "halftone", "background": "halftone", "layout": "poster", "palette": "half_blue", "fonts": "bricolage", "premium": false},
+    {"name": "halftone_yellow", "family": "halftone", "background": "halftone", "layout": "poster", "palette": "half_yellow", "fonts": "anton_manrope", "premium": false},
+    {"name": "halftone_teal", "family": "halftone", "background": "halftone", "layout": "poster", "palette": "half_teal", "fonts": "space", "premium": false},
+
+    {"name": "bauhaus_classic", "family": "bauhaus", "background": "bauhaus", "layout": "poster", "palette": "bau_classic", "fonts": "space", "premium": false},
+    {"name": "bauhaus_dark", "family": "bauhaus", "background": "bauhaus", "layout": "poster", "palette": "bau_dark", "fonts": "bricolage", "premium": false},
+    {"name": "bauhaus_pastel", "family": "bauhaus", "background": "bauhaus", "layout": "poster", "palette": "bau_pastel", "fonts": "space", "premium": false},
+    {"name": "bauhaus_earth", "family": "bauhaus", "background": "bauhaus", "layout": "poster", "palette": "bau_earth", "fonts": "barlow_plex", "premium": false},
+
+    {"name": "waves_sea", "family": "waves", "background": "waves", "layout": "card", "palette": "wave_sea", "fonts": "fraunces_manrope", "premium": false},
+    {"name": "waves_sunset", "family": "waves", "background": "waves", "layout": "poster", "palette": "wave_sunset", "fonts": "bricolage", "premium": false},
+    {"name": "waves_night", "family": "waves", "background": "waves", "layout": "card", "palette": "wave_night", "fonts": "plex", "premium": false},
+    {"name": "waves_mint", "family": "waves", "background": "waves", "layout": "poster", "palette": "wave_mint", "fonts": "space", "premium": false},
+
+    {"name": "notebook_lined", "family": "notebook", "background": "lined", "layout": "note", "palette": "note_white", "fonts": "fraunces_manrope", "premium": false},
+    {"name": "notebook_cream", "family": "notebook", "background": "lined", "layout": "note", "palette": "note_cream", "fonts": "lora_manrope", "premium": false},
+    {"name": "notebook_grid", "family": "notebook", "background": "grid", "layout": "note", "palette": "note_grid_white", "fonts": "space", "premium": false},
+    {"name": "notebook_grid_green", "family": "notebook", "background": "grid", "layout": "note", "palette": "note_grid_green", "fonts": "fraunces_manrope", "premium": false},
+    {"name": "notebook_board", "family": "notebook", "background": "lined", "layout": "note", "palette": "note_board", "fonts": "lora_manrope", "premium": false}
+  ]
+}

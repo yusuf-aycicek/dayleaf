@@ -66,6 +66,9 @@ final class WordItem extends ContentItem {
     required this.level,
     required this.meaning,
     required this.example,
+    this.syllables,
+    this.ipa,
+    this.partOfSpeech,
   });
 
   /// The English word or phrase.
@@ -77,6 +80,32 @@ final class WordItem extends ContentItem {
 
   /// Example sentence: `en` is the sentence, other languages translate it.
   final LocalizedText example;
+
+  /// Optional dictionary details: "re·sil·ient", "rɪˈzɪliənt" (without
+  /// slashes) and the part of speech.
+  final String? syllables;
+  final String? ipa;
+  final PartOfSpeech? partOfSpeech;
+}
+
+enum PartOfSpeech {
+  noun('n.'),
+  verb('v.'),
+  adj('adj.'),
+  adv('adv.'),
+  phrase('phr.');
+
+  const PartOfSpeech(this.abbreviation);
+
+  /// The English dictionary abbreviation, the same in every language.
+  final String abbreviation;
+
+  static PartOfSpeech? tryParse(Object? name) {
+    for (final p in values) {
+      if (p.name == name) return p;
+    }
+    return null;
+  }
 }
 
 final class TextItem extends ContentItem {

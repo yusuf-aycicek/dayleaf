@@ -9,11 +9,18 @@ class DailyPick {
     required this.day,
     required this.item,
     this.isReview = false,
+    this.styleName,
   });
 
   final int day;
   final ContentItem item;
   final bool isReview;
+
+  /// The style recipe chosen for the day (set by the service).
+  final String? styleName;
+
+  DailyPick withStyle(String? name) =>
+      DailyPick(day: day, item: item, isReview: isReview, styleName: name);
 
   String get categoryId => item.categoryId;
 }

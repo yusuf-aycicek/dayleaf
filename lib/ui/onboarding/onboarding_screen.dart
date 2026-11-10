@@ -9,7 +9,7 @@ import '../../domain/user_settings.dart';
 import '../../l10n/gen/app_localizations.dart';
 import '../labels.dart';
 import '../widgets/choice_tiles.dart';
-import '../widgets/template_preview.dart';
+import '../widgets/style_picker.dart';
 import '../widgets/ya_logo.dart';
 
 enum _Step { language, interests, level, target, template, apply }
@@ -213,13 +213,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         return _StepPage(
           title: l10n.onboardingTemplateTitle,
           body: l10n.onboardingTemplateBody,
-          children: [
-            TemplatePicker(
-              selected: s.templateId,
-              settings: s,
-              onSelected: (id) => _update((x) => x.copyWith(templateId: id)),
-            ),
-          ],
+          children: [StylePicker(settings: s, onChanged: _update)],
         );
       case _Step.apply:
         return _StepPage(

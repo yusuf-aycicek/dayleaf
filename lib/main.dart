@@ -7,6 +7,7 @@ import 'app/app.dart';
 import 'app/daily_wallpaper_service.dart';
 import 'app/providers.dart';
 import 'platform/background_tasks.dart';
+import 'rendering/style/fonts.dart';
 import 'ui/home/home_shell.dart';
 import 'ui/onboarding/onboarding_screen.dart';
 
@@ -83,12 +84,7 @@ class _DailyWallRootState extends ConsumerState<DailyWallRoot>
 
 void _registerFontLicenses() {
   LicenseRegistry.addLicense(() async* {
-    for (final (family, file) in [
-      ('Manrope', 'OFL-Manrope.txt'),
-      ('Lora', 'OFL-Lora.txt'),
-      ('Anton', 'OFL-Anton.txt'),
-      ('JetBrains Mono', 'OFL-JetBrainsMono.txt'),
-    ]) {
+    for (final (family, file) in BundledFonts.licenses) {
       yield LicenseEntryWithLineBreaks([
         family,
       ], await rootBundle.loadString('assets/fonts/$file'));

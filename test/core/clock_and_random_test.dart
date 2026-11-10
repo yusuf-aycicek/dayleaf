@@ -81,7 +81,9 @@ void main() {
       categoryIds: ['english_words', 'motivation'],
       englishLevel: CefrLevel.c1,
       target: WallpaperTarget.lock,
-      templateId: 'card',
+      styleSurprise: false,
+      styleFamilies: ['terminal', 'riso'],
+      styleName: 'riso_pink_blue',
       dailyChangeEnabled: false,
       onboardingComplete: true,
     );

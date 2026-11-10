@@ -136,6 +136,40 @@ void main() {
     expect(messages(r).single, startsWith('"level" must be one of'));
   });
 
+  test('dictionary details are optional and checked', () {
+    final full = word('en_0001')
+      ..['syllables'] = 're·sil·ient'
+      ..['ipa'] = 'rɪˈzɪliənt'
+      ..['pos'] = 'adj';
+    final ok = validateCategory(
+      ContentCatalog.englishWords,
+      wordFile([full]),
+      languages: langs,
+    );
+    expect(ok.issues, isEmpty);
+    final item = ok.items.single as WordItem;
+    expect(
+      (item.syllables, item.ipa, item.partOfSpeech),
+      ('re·sil·ient', 'rɪˈzɪliənt', PartOfSpeech.adj),
+    );
+
+    final bad = validateCategory(
+      ContentCatalog.englishWords,
+      wordFile([
+        word('en_0001')..['syllables'] = 're·sil·ent',
+        word('en_0002', word: 'brave')..['ipa'] = '/breɪv/',
+        word('en_0003', word: 'calm')..['pos'] = 'adjective',
+      ]),
+      languages: langs,
+    );
+    expect(bad.items, isEmpty);
+    expect(messages(bad), [
+      startsWith('"syllables"'),
+      startsWith('"ipa"'),
+      startsWith('"pos"'),
+    ]);
+  });
+
   test('unknown fields are warnings, not errors', () {
     final item = text('mo_0001')..['author'] = 'someone';
     final r = validateCategory(

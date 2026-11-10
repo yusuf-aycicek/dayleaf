@@ -17,7 +17,9 @@ class UserSettings {
     this.categoryIds = const [],
     this.englishLevel = CefrLevel.b1,
     this.target = WallpaperTarget.both,
-    this.templateId = 'minimal',
+    this.styleSurprise = true,
+    this.styleFamilies = const [],
+    this.styleName,
     this.dailyChangeEnabled = true,
     this.onboardingComplete = false,
   });
@@ -29,7 +31,14 @@ class UserSettings {
   final List<String> categoryIds;
   final CefrLevel englishLevel;
   final WallpaperTarget target;
-  final String templateId;
+
+  /// "Surprise me every day": a different recipe each day from
+  /// [styleFamilies] (empty means every family).
+  final bool styleSurprise;
+  final List<String> styleFamilies;
+
+  /// The one recipe used when [styleSurprise] is off.
+  final String? styleName;
   final bool dailyChangeEnabled;
   final bool onboardingComplete;
 
@@ -40,7 +49,9 @@ class UserSettings {
     List<String>? categoryIds,
     CefrLevel? englishLevel,
     WallpaperTarget? target,
-    String? templateId,
+    bool? styleSurprise,
+    List<String>? styleFamilies,
+    String? styleName,
     bool? dailyChangeEnabled,
     bool? onboardingComplete,
   }) => UserSettings(
@@ -48,7 +59,9 @@ class UserSettings {
     categoryIds: categoryIds ?? this.categoryIds,
     englishLevel: englishLevel ?? this.englishLevel,
     target: target ?? this.target,
-    templateId: templateId ?? this.templateId,
+    styleSurprise: styleSurprise ?? this.styleSurprise,
+    styleFamilies: styleFamilies ?? this.styleFamilies,
+    styleName: styleName ?? this.styleName,
     dailyChangeEnabled: dailyChangeEnabled ?? this.dailyChangeEnabled,
     onboardingComplete: onboardingComplete ?? this.onboardingComplete,
   );
@@ -58,7 +71,9 @@ class UserSettings {
     'categoryIds': categoryIds,
     'englishLevel': englishLevel.code,
     'target': target.name,
-    'templateId': templateId,
+    'styleSurprise': styleSurprise,
+    'styleFamilies': styleFamilies,
+    'styleName': styleName,
     'dailyChangeEnabled': dailyChangeEnabled,
     'onboardingComplete': onboardingComplete,
   };
@@ -71,7 +86,13 @@ class UserSettings {
     ],
     englishLevel: CefrLevel.tryParse(json['englishLevel']) ?? CefrLevel.b1,
     target: WallpaperTarget.parse(json['target']),
-    templateId: json['templateId'] as String? ?? 'minimal',
+    // Older versions stored a "templateId"; the new styles replace it.
+    styleSurprise: json['styleSurprise'] as bool? ?? true,
+    styleFamilies: [
+      for (final id in (json['styleFamilies'] as List<Object?>? ?? const []))
+        if (id is String) id,
+    ],
+    styleName: json['styleName'] as String?,
     dailyChangeEnabled: json['dailyChangeEnabled'] as bool? ?? true,
     onboardingComplete: json['onboardingComplete'] as bool? ?? false,
   );

@@ -30,12 +30,6 @@ extension Labels on AppLocalizations {
     WallpaperTarget.home => targetHome,
     WallpaperTarget.both => targetBoth,
   };
-
-  String template(String id) => switch (id) {
-    'card' => templateCard,
-    'bold' => templateBold,
-    _ => templateMinimal,
-  };
 }
 
 IconData categoryIcon(String id) => switch (id) {

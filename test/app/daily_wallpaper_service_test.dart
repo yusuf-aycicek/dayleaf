@@ -79,10 +79,37 @@ void main() {
       final s = service();
       final first = await run(s);
       final settings = await store.loadSettings();
-      await store.saveSettings(settings.copyWith(templateId: 'card'));
+      await store.saveSettings(
+        settings.copyWith(styleSurprise: false, styleName: 'terminal_amber'),
+      );
       final second = await run(s, ApplyTrigger.settingsChanged);
       expect(second.outcome, ApplyOutcome.applied);
       expect(second.pick!.item.id, first.pick!.item.id);
+      expect(second.pick!.styleName, 'terminal_amber');
+    });
+  });
+
+  testWidgets('a day keeps its style; the next day gets another one', (
+    tester,
+  ) async {
+    await tester.runAsync(() async {
+      final s = service();
+      final first = await run(s);
+      expect(first.pick!.styleName, isNotNull);
+      final again = await s.ensureToday(
+        trigger: ApplyTrigger.user,
+        force: true,
+      );
+      expect(again.pick!.styleName, first.pick!.styleName);
+      final progress = await store.loadProgress();
+      expect(
+        progress.entryFor(first.pick!.day)!.styleName,
+        first.pick!.styleName,
+      );
+      clock.value = clock.value.add(const Duration(days: 1));
+      final next = await run(s);
+      expect(next.outcome, ApplyOutcome.applied);
+      expect(next.pick!.styleName, isNot(first.pick!.styleName));
     });
   });
 

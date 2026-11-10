@@ -12,10 +12,10 @@ import '../domain/progress.dart';
 import '../domain/user_settings.dart';
 import '../l10n/gen/app_localizations.dart';
 import '../platform/wallpaper_port.dart';
-import '../rendering/background.dart';
-import '../rendering/templates.dart';
-import '../rendering/wallpaper_content.dart';
+import '../domain/style_selector.dart';
 import '../rendering/wallpaper_renderer.dart';
+import 'style_repository.dart';
+import 'wallpaper_text.dart';
 
 enum ApplyTrigger { appOpen, background, user, settingsChanged }
 
@@ -51,12 +51,14 @@ class DailyWallpaperService {
     required this.port,
     this.clock = const SystemClock(),
     this.systemLanguage,
-  });
+    StyleRepository? styles,
+  }) : styles = styles ?? StyleRepository(languages: appLanguages);
 
   final AppStore store;
   final ContentRepository content;
   final WallpaperPort port;
   final Clock clock;
+  final StyleRepository styles;
 
   /// Overrides the platform locale (tests).
   final String? systemLanguage;
@@ -126,22 +128,26 @@ class DailyWallpaperService {
     if (!force &&
         entry != null &&
         settings.categoryIds.contains(entry.categoryId) &&
-        progress.lastApplied?.day == day &&
-        progress.lastApplied?.key ==
-            applyKey(entry.itemId, settings, language)) {
-      return const ApplyResult(ApplyOutcome.alreadyApplied);
+        progress.lastApplied?.day == day) {
+      final style = await _styleFor(day, entry.categoryId, settings, progress);
+      if (progress.lastApplied?.key ==
+          applyKey(entry.itemId, style, settings, language)) {
+        return const ApplyResult(ApplyOutcome.alreadyApplied);
+      }
     }
 
     try {
       final library = await content.load();
-      final (pick, picked) = ContentSelector(library)
+      final (unstyled, picked) = ContentSelector(library)
           .pickForDay(day, settings, progress);
       progress = picked;
-      if (pick == null) {
+      if (unstyled == null) {
         await store.saveProgress(progress);
         return const ApplyResult(ApplyOutcome.noContent);
       }
-      final key = applyKey(pick.item.id, settings, language);
+      final DailyPick pick;
+      (pick, progress) = await _styled(unstyled, settings, progress);
+      final key = applyKey(pick.item.id, pick.styleName, settings, language);
       if (!force &&
           progress.lastApplied?.day == day &&
           progress.lastApplied?.key == key) {
@@ -180,10 +186,40 @@ class DailyWallpaperService {
   Future<DailyPick?> todaysPick() async {
     final settings = await store.loadSettings();
     final library = await content.load();
-    final (pick, progress) = ContentSelector(library)
+    final (unstyled, picked) = ContentSelector(library)
         .pickForDay(await today(), settings, await store.loadProgress());
+    if (unstyled == null) {
+      await store.saveProgress(picked);
+      return null;
+    }
+    final (pick, progress) = await _styled(unstyled, settings, picked);
     await store.saveProgress(progress);
     return pick;
+  }
+
+  /// The style of [day]: the one stored for it when still allowed,
+  /// otherwise a new pick that differs from yesterday's.
+  Future<String?> _styleFor(
+    int day,
+    String categoryId,
+    UserSettings settings,
+    ProgressState progress,
+  ) async => StyleSelector.pick(
+    day: day,
+    categoryId: categoryId,
+    settings: settings,
+    choices: (await styles.load()).choices,
+    today: progress.entryFor(day)?.styleName,
+    yesterday: progress.entryFor(day - 1)?.styleName,
+  );
+
+  Future<(DailyPick, ProgressState)> _styled(
+    DailyPick pick,
+    UserSettings settings,
+    ProgressState progress,
+  ) async {
+    final name = await _styleFor(pick.day, pick.categoryId, settings, progress);
+    return (pick.withStyle(name), progress.withStyle(pick.day, name));
   }
 
   Future<RenderedWallpaper> render(
@@ -191,18 +227,23 @@ class DailyWallpaperService {
     UserSettings settings, {
     required int width,
     required int height,
-  }) {
+  }) async {
     final language = languageFor(settings);
     final l10n = lookupAppLocalizations(ui.Locale(language));
-    final wallpaperContent = WallpaperContent.fromItem(
-      pick.item,
-      language: language,
-      categoryLabel: categoryLabel(l10n, pick.categoryId),
-    );
+    final book = await styles.load();
+    final recipe =
+        book.byName(pick.styleName) ??
+        book.byName(
+          await _styleFor(
+            pick.day,
+            pick.categoryId,
+            settings,
+            const ProgressState(),
+          ),
+        )!;
     return WallpaperRenderer.render(
-      content: wallpaperContent,
-      template: WallpaperTemplates.byId(settings.templateId),
-      background: BackgroundSpec.forDay(pick.day, pick.categoryId),
+      content: wallpaperContentFor(pick.item, l10n: l10n, day: pick.day),
+      recipe: recipe,
       width: width,
       height: height,
     );
@@ -242,8 +283,12 @@ class DailyWallpaperService {
 
   /// Everything that changes the picture. Bump the trailing version when
   /// the rendering changes so existing users get the new look.
-  static String applyKey(String itemId, UserSettings s, String language) =>
-      '$itemId|${s.templateId}|${s.target.name}|$language|r1';
+  static String applyKey(
+    String itemId,
+    String? styleName,
+    UserSettings s,
+    String language,
+  ) => '$itemId|$styleName|${s.target.name}|$language|r2';
 }
 
 String categoryLabel(AppLocalizations l10n, String categoryId) =>

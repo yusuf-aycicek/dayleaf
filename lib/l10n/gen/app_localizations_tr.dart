@@ -80,15 +80,6 @@ class AppLocalizationsTr extends AppLocalizations {
   String get targetBoth => 'İkisi de';
 
   @override
-  String get templateMinimal => 'Sade';
-
-  @override
-  String get templateCard => 'Kart';
-
-  @override
-  String get templateBold => 'Büyük yazı';
-
-  @override
   String get next => 'İleri';
 
   @override
@@ -130,7 +121,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboardingTemplateBody =>
-      'Arka planlar telefonunda üretilir ve her gün değişir.';
+      'Beğendiğin stil ailelerini seç ya da sürprizi kapatıp tek bir stil seç.';
 
   @override
   String get onboardingApplyTitle => 'Her şey hazır';
@@ -241,4 +232,90 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get logoLabel => 'Yusuf Ayçiçek\'in logosu';
+
+  @override
+  String get wpMonths =>
+      'Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık';
+
+  @override
+  String get wpWeekdays =>
+      'Pazartesi,Salı,Çarşamba,Perşembe,Cuma,Cumartesi,Pazar';
+
+  @override
+  String wpLongDate(int day, String month, int year) {
+    return '$day $month $year';
+  }
+
+  @override
+  String wpDayOfYear(int n) {
+    return 'Yılın $n. günü';
+  }
+
+  @override
+  String wpDaysLeft(int n) {
+    return 'Kalan $n gün';
+  }
+
+  @override
+  String get wpWordOfDay => 'Günün kelimesi';
+
+  @override
+  String get wpKeyLevel => 'seviye';
+
+  @override
+  String get wpKeyType => 'tür';
+
+  @override
+  String get wpKeyMeaning => 'anlam';
+
+  @override
+  String get wpKeyCategory => 'kategori';
+
+  @override
+  String get posNoun => 'isim';
+
+  @override
+  String get posVerb => 'fiil';
+
+  @override
+  String get posAdj => 'sıfat';
+
+  @override
+  String get posAdv => 'zarf';
+
+  @override
+  String get posPhrase => 'deyim';
+
+  @override
+  String get styleSurprise => 'Her gün sürpriz';
+
+  @override
+  String get styleSurpriseSubtitle =>
+      'Seçtiğin ailelerden her gün başka bir stil';
+
+  @override
+  String get styleFamilies => 'Stil aileleri';
+
+  @override
+  String get styleFamiliesHint =>
+      'Beğendiğin aileleri seç. Her gün bunlardan bir stil seçilir.';
+
+  @override
+  String get styleChooseHint => 'Her gün kullanmak istediğin stile dokun.';
+
+  @override
+  String get styleKeepOne => 'En az bir aile seçili kalmalı.';
+
+  @override
+  String styleSummarySurprise(int n) {
+    return 'Sürpriz · $n aile';
+  }
+
+  @override
+  String get styleSummaryAll => 'Sürpriz · bütün aileler';
+
+  @override
+  String styleNumbered(String family, int n) {
+    return '$family $n';
+  }
 }
