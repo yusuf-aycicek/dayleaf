@@ -26,9 +26,9 @@ no internet permission, no account, no ads and no analytics.
 Screenshots go in [`docs/screenshots/`](docs/screenshots/). To take them, see
 [docs/guides.tr.md](docs/guides.tr.md#5-readme-ekran-görüntüleri).
 
-| Onboarding | Today | Home screen |
-|---|---|---|
-| ![](docs/screenshots/onboarding.png) | ![](docs/screenshots/today.png) | ![](docs/screenshots/home.png) |
+| Onboarding | Today | Lock screen | Home screen |
+|---|---|---|---|
+| ![](docs/screenshots/onboarding.png) | ![](docs/screenshots/today.png) | ![](docs/screenshots/lock.png) | ![](docs/screenshots/home.png) |
 
 ## Architecture
 

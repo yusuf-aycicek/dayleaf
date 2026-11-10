@@ -1,2 +1,2 @@
-Put the README screenshots here: `onboarding.png`, `today.png`, `home.png` (and `lock.png` once a screen lock is set).
+Put the README screenshots here: `onboarding.png`, `today.png`, `lock.png`, `home.png`.
 See `docs/guides.tr.md`, section 5.
