@@ -22,6 +22,19 @@
   atılır. Komut çıktısı `tail`/`grep`'e borulanmaz; çıkış kodu ayrıca denetlenir.
   Golden testler CI'da çalışmaz (`flutter test --exclude-tags golden`).
 
+## Yayın: GitHub Pages
+
+- Site: `https://yusuf-aycicek.github.io/dailywall/`, kaynak `main` dalındaki `docs/`
+  klasörü (Jekyll, klasik "Deploy from a branch").
+- Gizlilik politikası adresi **kalıcıdır**:
+  `https://yusuf-aycicek.github.io/dailywall/privacy-policy`. Uygulama
+  (`lib/core/app_config.dart`) ve Play Console bu adresi kullanır; yayımlanmış bir
+  uygulamadaki bağlantı sonradan değiştirilemez.
+- İleride React tanıtım sitesine geçilince de bu adres aynı kalmalı: derleme çıktısı
+  `privacy-policy` yolunu sunmalı (ör. `privacy-policy/index.html` ya da
+  `privacy-policy.html`), tr ve en metniyle. Geçişten önce ve sonra adresin 200
+  döndüğü kontrol edilir. Kaynak o zaman büyük olasılıkla GitHub Actions'a taşınır.
+
 ## Ortam (Windows)
 
 - Flutter: `C:\dev\flutter`. Android SDK: `C:\Android\Sdk` (NDK 28.2.13676358 elle
