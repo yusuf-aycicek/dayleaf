@@ -1,8 +1,8 @@
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/data/content_repository.dart';
-import 'package:dailywall/domain/user_settings.dart';
-import 'package:dailywall/l10n/gen/app_localizations.dart';
-import 'package:dailywall/ui/widgets/style_picker.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/data/content_repository.dart';
+import 'package:dayleaf/domain/user_settings.dart';
+import 'package:dayleaf/l10n/gen/app_localizations.dart';
+import 'package:dayleaf/ui/widgets/style_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';

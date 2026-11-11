@@ -36,7 +36,7 @@ sub = ImageFont.truetype(str(FONTS / 'IBMPlexMono-Regular.ttf'), 20)
 fam = ImageFont.truetype(str(FONTS / 'SpaceGrotesk-Variable.ttf'), 26)
 fam.set_variation_by_axes([700])
 rec = ImageFont.truetype(str(FONTS / 'IBMPlexMono-Regular.ttf'), 18)
-draw.text((PAD, PAD - 6), 'dailywall · stil kataloğu', font=title, fill='#1B1B1B')
+draw.text((PAD, PAD - 6), 'Dayleaf · stil kataloğu', font=title, fill='#1B1B1B')
 draw.text(
     (PAD, PAD + 66),
     f'Her aileden bir tarif · {len(names)} aile, {len(book["recipes"])} tarif'

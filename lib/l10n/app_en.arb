@@ -2,7 +2,7 @@
   "@@locale": "en",
   "languageNativeName": "English",
   "@languageNativeName": {"description": "The name of this language, written in this language. Shown in the language picker."},
-  "appTitle": "dailywall",
+  "appTitle": "Dayleaf",
   "@appTitle": {"description": "App name. Not translated."},
   "homeTitle": "Today",
   "historyTitle": "History",
@@ -43,7 +43,7 @@
   "onboardingTemplateTitle": "Pick a style",
   "onboardingTemplateBody": "Pick the style families you like, or turn off the surprise and choose one style.",
   "onboardingApplyTitle": "All set",
-  "onboardingApplyBody": "dailywall creates today's wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.",
+  "onboardingApplyBody": "Dayleaf creates today's wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.",
   "onboardingApplyButton": "Set my wallpaper",
 
   "applyNow": "Apply now",

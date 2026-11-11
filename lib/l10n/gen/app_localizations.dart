@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// App name. Not translated.
   ///
   /// In en, this message translates to:
-  /// **'dailywall'**
+  /// **'Dayleaf'**
   String get appTitle;
 
   /// No description provided for @homeTitle.
@@ -317,7 +317,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboardingApplyBody.
   ///
   /// In en, this message translates to:
-  /// **'dailywall creates today\'s wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.'**
+  /// **'Dayleaf creates today\'s wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.'**
   String get onboardingApplyBody;
 
   /// No description provided for @onboardingApplyButton.

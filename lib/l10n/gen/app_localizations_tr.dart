@@ -13,7 +13,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get languageNativeName => 'Türkçe';
 
   @override
-  String get appTitle => 'dailywall';
+  String get appTitle => 'Dayleaf';
 
   @override
   String get homeTitle => 'Bugün';
@@ -128,7 +128,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onboardingApplyBody =>
-      'dailywall bugünün duvar kağıdını telefonunda oluşturur ve her gün değiştirir. Duvar kağıdı ayarlamak ek bir izin gerektirmez ve hiçbir veri cihazından çıkmaz.';
+      'Dayleaf bugünün duvar kağıdını telefonunda oluşturur ve her gün değiştirir. Duvar kağıdı ayarlamak ek bir izin gerektirmez ve hiçbir veri cihazından çıkmaz.';
 
   @override
   String get onboardingApplyButton => 'Duvar kağıdımı ayarla';

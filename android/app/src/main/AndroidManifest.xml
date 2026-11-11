@@ -4,7 +4,7 @@
     <!-- Normal (install-time) permission, needed by WallpaperManager. -->
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
-    <!-- dailywall is fully offline. These permissions may be contributed by
+    <!-- Dayleaf is fully offline. These permissions may be contributed by
          plugin libraries but are never used, so they are stripped from the
          merged manifest. (The debug build re-adds INTERNET only for the
          Flutter tool: hot reload and the debugger.) -->
@@ -48,7 +48,7 @@
             <data android:mimeType="text/plain"/>
         </intent>
         <!-- url_launcher: open GitHub / privacy policy links in the browser.
-             Opening a link hands it to another app; dailywall itself never
+             Opening a link hands it to another app; Dayleaf itself never
              connects to the network. -->
         <intent>
             <action android:name="android.intent.action.VIEW" />

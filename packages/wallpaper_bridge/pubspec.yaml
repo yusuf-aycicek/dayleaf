@@ -1,6 +1,6 @@
 name: wallpaper_bridge
 description: >-
-  dailywall's platform layer: sets the device wallpaper through Android's
+  Dayleaf's platform layer: sets the device wallpaper through Android's
   WallpaperManager and reports the physical display size. Kept as a local
   plugin so it is registered in every Flutter engine, including the
   WorkManager background engine.

@@ -1,13 +1,13 @@
 ---
-title: dailywall – Privacy Policy / Gizlilik Politikası
+title: Dayleaf – Privacy Policy / Gizlilik Politikası
 permalink: /privacy-policy
 ---
 
-# dailywall – Privacy Policy
+# Dayleaf – Privacy Policy
 
 *Effective date: 6 November 2026*
 
-dailywall ("the app") is developed by Yusuf Ayçiçek. This policy explains what the app
+Dayleaf ("the app") is developed by Yusuf Ayçiçek. This policy explains what the app
 does with your data. In short, it collects nothing and sends nothing anywhere.
 
 ## Data the app collects
@@ -58,15 +58,15 @@ effective date.
 ## Contact
 
 Questions: open an issue at
-[github.com/yusuf-aycicek/dailywall](https://github.com/yusuf-aycicek/dailywall/issues).
+[github.com/yusuf-aycicek/dayleaf](https://github.com/yusuf-aycicek/dayleaf/issues).
 
 ---
 
-# dailywall – Gizlilik Politikası
+# Dayleaf – Gizlilik Politikası
 
 *Yürürlük tarihi: 6 Kasım 2026*
 
-dailywall'ı ("uygulama") Yusuf Ayçiçek geliştirmiştir. Bu metin, uygulamanın
+Dayleaf'i ("uygulama") Yusuf Ayçiçek geliştirmiştir. Bu metin, uygulamanın
 verilerinizle ne yaptığını açıklar. Kısaca: hiçbir veri toplamaz ve hiçbir yere bir
 şey göndermez.
 
@@ -116,5 +116,5 @@ Bu politika değişirse yeni sürüm yeni yürürlük tarihiyle bu adreste yayı
 ## İletişim
 
 Sorularınız için
-[github.com/yusuf-aycicek/dailywall](https://github.com/yusuf-aycicek/dailywall/issues)
+[github.com/yusuf-aycicek/dayleaf](https://github.com/yusuf-aycicek/dayleaf/issues)
 adresinde bir issue açabilirsiniz.

@@ -1,10 +1,12 @@
-# dailywall
+# Dayleaf
 
-[![CI](https://github.com/yusuf-aycicek/dailywall/actions/workflows/ci.yml/badge.svg)](https://github.com/yusuf-aycicek/dailywall/actions/workflows/ci.yml)
+<img src="docs/store/icon-512.png" width="96" alt="Dayleaf simgesi">
+
+[![CI](https://github.com/yusuf-aycicek/dayleaf/actions/workflows/ci.yml/badge.svg)](https://github.com/yusuf-aycicek/dayleaf/actions/workflows/ci.yml)
 
 *[English](README.md)*
 
-dailywall, ilgi alanlarına göre her gün yeni bir duvar kâğıdı veren bir Android
+Dayleaf, ilgi alanlarına göre her gün yeni bir duvar kâğıdı veren bir Android
 uygulamasıdır. Duvar kâğıdında seviyene uygun bir İngilizce kelime, bir yazılım
 ipucu, bir motivasyon cümlesi ya da bir genel kültür bilgisi olur. Her duvar kâğıdı
 telefonun kendisinde çizilir. Uygulamanın internet izni, hesabı, reklamı ve analitiği
@@ -101,7 +103,7 @@ karakter varsa derlemeden önce `TEMP`/`TMP`'yi de böyle bir klasöre yönlendi
 Gradle ve JDK "Unable to establish loopback connection" hatası verir.
 
 Paket adı **tek yerden** değişir: `android/gradle.properties`
-(`dailywall.applicationId`, `dailywall.appLabel`).
+(`dayleaf.applicationId`, `dayleaf.appLabel`).
 
 ### Testler
 
@@ -176,10 +178,14 @@ dosyasına bakın.
 - **Yeni dil:** `lib/l10n/app_<kod>.arb` ekleyin (`languageNativeName` dahil),
   `flutter gen-l10n` çalıştırın ve her içeriğe `<kod>` metnini ekleyin. Doğrulayıcı
   eksik kalanların hepsini listeler.
+- **Uygulama simgesi:** `tools/icon/make_icon.py` başındaki renkleri ve konumları
+  değiştirip `python tools/icon/make_icon.py` çalıştırın. Uyarlanabilir katmanları
+  (arka plan, ön plan, tek renk), eski simgeleri ve Google Play için
+  `docs/store/icon-512.png` dosyasını yazar.
 
 ## Gizlilik
 
-dailywall hiçbir veri toplamaz ve ağa erişmez. Ayrıntı için
+Dayleaf hiçbir veri toplamaz ve ağa erişmez. Ayrıntı için
 [gizlilik politikasına](docs/privacy-policy.md) bakın.
 
 ## Lisans ve emeği geçenler

@@ -1,5 +1,5 @@
-import 'package:dailywall/domain/progress.dart';
-import 'package:dailywall/domain/spaced_repetition.dart';
+import 'package:dayleaf/domain/progress.dart';
+import 'package:dayleaf/domain/spaced_repetition.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

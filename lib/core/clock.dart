@@ -31,7 +31,7 @@ class OffsetClock implements Clock {
   DateTime now() => base.now().add(Duration(days: days));
 }
 
-/// Number of local calendar days since 1970-01-01. A "day" in dailywall is
+/// Number of local calendar days since 1970-01-01. A "day" in Dayleaf is
 /// the user's local date, so the wallpaper changes at local midnight and
 /// daylight-saving shifts never skip or repeat a day.
 int dayIndexOf(DateTime time) =>

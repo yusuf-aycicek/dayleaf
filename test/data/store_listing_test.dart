@@ -18,6 +18,13 @@ void main() {
   }
 
   for (final lang in ['en', 'tr']) {
+    test('$lang app name fits in 30 characters', () {
+      final title = section('title:$lang');
+      expect(title.runes.length, inInclusiveRange(2, 30), reason: title);
+      expect(title, startsWith('Dayleaf'));
+      expect(title.contains('\n'), isFalse);
+    });
+
     test('$lang short description fits in 80 characters', () {
       final short = section('short:$lang');
       expect(short.runes.length, inInclusiveRange(10, 80), reason: short);

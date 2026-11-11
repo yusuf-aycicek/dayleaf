@@ -1,7 +1,7 @@
-import 'package:dailywall/data/app_store.dart';
-import 'package:dailywall/domain/progress.dart';
-import 'package:dailywall/domain/spaced_repetition.dart';
-import 'package:dailywall/domain/user_settings.dart';
+import 'package:dayleaf/data/app_store.dart';
+import 'package:dayleaf/domain/progress.dart';
+import 'package:dayleaf/domain/spaced_repetition.dart';
+import 'package:dayleaf/domain/user_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences_platform_interface/in_memory_shared_preferences_async.dart';

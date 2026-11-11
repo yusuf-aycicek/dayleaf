@@ -1,4 +1,4 @@
-package com.yusufaycicek.dailywall
+package com.yusufaycicek.dayleaf
 
 import io.flutter.embedding.android.FlutterActivity
 

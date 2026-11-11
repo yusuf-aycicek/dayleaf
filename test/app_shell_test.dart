@@ -1,6 +1,6 @@
-import 'package:dailywall/app/app.dart';
-import 'package:dailywall/l10n/gen/app_localizations.dart';
-import 'package:dailywall/ui/labels.dart';
+import 'package:dayleaf/app/app.dart';
+import 'package:dayleaf/l10n/gen/app_localizations.dart';
+import 'package:dayleaf/ui/labels.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -13,7 +13,7 @@ void main() {
       tester,
     ) async {
       await tester.pumpWidget(
-        DailyWallApp(
+        DayleafApp(
           locale: locale,
           home: Builder(
             builder: (context) => Text(AppLocalizations.of(context).homeTitle),

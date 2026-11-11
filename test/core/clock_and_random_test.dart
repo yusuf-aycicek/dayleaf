@@ -1,7 +1,7 @@
-import 'package:dailywall/core/clock.dart';
-import 'package:dailywall/core/seeded_random.dart';
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/domain/user_settings.dart';
+import 'package:dayleaf/core/clock.dart';
+import 'package:dayleaf/core/seeded_random.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/domain/user_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

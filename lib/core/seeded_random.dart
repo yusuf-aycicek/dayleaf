@@ -2,7 +2,7 @@
 ///
 /// `dart:math`'s `Random(seed)` does not promise the same sequence across
 /// SDK versions, but "same day, same wallpaper" must hold after an update,
-/// so dailywall uses its own small generator (mulberry32) and string hash
+/// so Dayleaf uses its own small generator (mulberry32) and string hash
 /// (FNV-1a).
 class SeededRandom {
   SeededRandom(int seed) : _state = seed & 0xFFFFFFFF;

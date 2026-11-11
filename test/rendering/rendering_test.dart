@@ -1,12 +1,12 @@
 import 'dart:ui' as ui;
 
-import 'package:dailywall/app/wallpaper_text.dart';
-import 'package:dailywall/rendering/color_math.dart';
-import 'package:dailywall/rendering/layout.dart';
-import 'package:dailywall/rendering/style/layouts.dart';
-import 'package:dailywall/rendering/style/style_book.dart';
-import 'package:dailywall/rendering/wallpaper_content.dart';
-import 'package:dailywall/rendering/wallpaper_renderer.dart';
+import 'package:dayleaf/app/wallpaper_text.dart';
+import 'package:dayleaf/rendering/color_math.dart';
+import 'package:dayleaf/rendering/layout.dart';
+import 'package:dayleaf/rendering/style/layouts.dart';
+import 'package:dayleaf/rendering/style/style_book.dart';
+import 'package:dayleaf/rendering/wallpaper_content.dart';
+import 'package:dayleaf/rendering/wallpaper_renderer.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -149,10 +149,7 @@ void main() {
         height: 2400,
       );
       expect((r.image.width, r.image.height), (1080, 2400));
-      final shared = await WallpaperRenderer.withWatermark(
-        r.image,
-        'dailywall',
-      );
+      final shared = await WallpaperRenderer.withWatermark(r.image, 'Dayleaf');
       expect((shared.width, shared.height), (1080, 2400));
       final rgba = await WallpaperRenderer.encodeRgba(r.image);
       expect(rgba.length, 1080 * 2400 * 4);

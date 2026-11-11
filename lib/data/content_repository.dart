@@ -46,7 +46,7 @@ class ContentRepository {
 
     final errors = issues.where((i) => i.isError).toList();
     if (errors.isNotEmpty) {
-      debugPrint('dailywall: ${errors.length} content error(s) skipped:');
+      debugPrint('dayleaf: ${errors.length} content error(s) skipped:');
       for (final e in errors) {
         debugPrint('  $e');
       }

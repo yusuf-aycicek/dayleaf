@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:dailywall/rendering/style/fonts.dart';
+import 'package:dayleaf/rendering/style/fonts.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'test_fonts.dart';

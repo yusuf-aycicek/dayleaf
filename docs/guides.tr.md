@@ -1,4 +1,4 @@
-# dailywall – Adım adım kılavuzlar
+# Dayleaf – Adım adım kılavuzlar
 
 Komutlar Windows'ta **Git Bash** içindir. PowerShell'de aynı komutlar çalışır; yalnızca
 ortam değişkeni ataması farklıdır (`$env:TEMP='C:\dev\tmp'`).
@@ -61,7 +61,7 @@ bu bağ kopar; bu, sistemin beklenen davranışıdır.
 
 ## 3. Arka plan görevini beklemeden test etmek
 
-Günlük görev WorkManager'ın periyodik işidir (`dailywall.daily`, 6 saatte bir; bugünün
+Günlük görev WorkManager'ın periyodik işidir (`dayleaf.daily`, 6 saatte bir; bugünün
 duvar kâğıdı zaten konmuşsa hemen çıkar).
 
 **a) Uygulamanın içinden (debug derlemesi):** Ayarlar'ın en altındaki **Developer**
@@ -82,16 +82,16 @@ bölümü:
 
    ```bash
    adb shell input keyevent KEYCODE_HOME
-   adb shell am kill com.yusufaycicek.dailywall
-   adb shell pidof com.yusufaycicek.dailywall    # boş çıkmalı
+   adb shell am kill com.yusufaycicek.dayleaf
+   adb shell pidof com.yusufaycicek.dayleaf    # boş çıkmalı
    ```
 
 3. Bir dakika sonra:
 
    ```bash
    adb logcat -s flutter
-   # dailywall background task "applyDailyWallpaperNow": ApplyResult(...)
-   adb shell pidof com.yusufaycicek.dailywall    # yeni bir süreç kimliği
+   # dayleaf background task "applyDailyWallpaperNow": ApplyResult(...)
+   adb shell pidof com.yusufaycicek.dayleaf    # yeni bir süreç kimliği
    adb shell dumpsys wallpaper | grep "id="       # duvar kâğıdı değiştiyse id artar
    ```
 
@@ -99,24 +99,24 @@ bölümü:
    değişmez. Değişimi görmek için önce *Pretend it is tomorrow* kullanın ya da
    aşağıdaki (d) yolunu izleyin.
 
-Periyodik işi (`dailywall.daily`) adb ile **öne alamazsınız**. İşin kimliğini görmek
+Periyodik işi (`dayleaf.daily`) adb ile **öne alamazsınız**. İşin kimliğini görmek
 için:
 
 ```bash
-adb shell dumpsys jobscheduler | grep "JOB androidx.work.systemjobscheduler" | grep dailywall
+adb shell dumpsys jobscheduler | grep "JOB androidx.work.systemjobscheduler" | grep dayleaf
 # JOB androidx.work.systemjobscheduler:u0a235/3: ... -> kimlik 3
 ```
 
 Android 14+'ta WorkManager işleri bir ad alanında tuttuğu için zorlama komutu `-n`
 ister: `adb shell cmd jobscheduler run -f -n androidx.work.systemjobscheduler
-com.yusufaycicek.dailywall 3`. Ama WorkManager periyodik işi süresi dolmadan
+com.yusufaycicek.dayleaf 3`. Ama WorkManager periyodik işi süresi dolmadan
 çalıştırmaz; logcat'te `WM-WorkerWrapper: ... is ENQUEUED; not doing any work`
 yazar. Bu yüzden (b)'deki tek seferlik iş kullanılır.
 
 **c) WorkManager'ın kendi tanılama çıktısı** (debug derlemesi):
 
 ```bash
-adb shell am broadcast -a "androidx.work.diagnostics.REQUEST_DIAGNOSTICS" -p com.yusufaycicek.dailywall
+adb shell am broadcast -a "androidx.work.diagnostics.REQUEST_DIAGNOSTICS" -p com.yusufaycicek.dayleaf
 adb logcat -s WM-DiagnosticsWrkr
 ```
 
@@ -223,7 +223,7 @@ Görüntüler 1080 piksel genişliğindedir. README'de tablo içinde küçültü
 
    ```bash
    gh auth login
-   gh repo create yusuf-aycicek/dailywall --public --source . --push \
+   gh repo create yusuf-aycicek/dayleaf --public --source . --push \
      --description "A new wallpaper every day, generated on-device. Offline, no ads."
    ```
 
@@ -232,7 +232,7 @@ Görüntüler 1080 piksel genişliğindedir. README'de tablo içinde küçültü
 5. **Gizlilik politikasını GitHub Pages'te yayımlamak:** depo → Settings → Pages →
    *Build and deployment*: Source **Deploy from a branch**, Branch **main**, klasör
    **/docs** → Save. Birkaç dakika sonra
-   `https://yusuf-aycicek.github.io/dailywall/privacy-policy` açılır. Uygulamadaki
+   `https://yusuf-aycicek.github.io/dayleaf/privacy-policy` açılır. Uygulamadaki
    bağlantı (`lib/core/app_config.dart`) ve Play Console'daki *Gizlilik politikası*
    alanı bu adresi kullanır.
 

@@ -2,13 +2,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:dailywall/app/wallpaper_text.dart';
-import 'package:dailywall/core/clock.dart';
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/data/content_schema.dart';
-import 'package:dailywall/l10n/gen/app_localizations.dart';
-import 'package:dailywall/rendering/style/style_book.dart';
-import 'package:dailywall/rendering/wallpaper_content.dart';
+import 'package:dayleaf/app/wallpaper_text.dart';
+import 'package:dayleaf/core/clock.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/data/content_schema.dart';
+import 'package:dayleaf/l10n/gen/app_localizations.dart';
+import 'package:dayleaf/rendering/style/style_book.dart';
+import 'package:dayleaf/rendering/wallpaper_content.dart';
 
 /// 10 November 2026, the day of the reference designs.
 final sampleDay = dayIndexOf(DateTime(2026, 11, 10));

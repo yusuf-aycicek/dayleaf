@@ -10,7 +10,7 @@ library;
 
 import 'dart:io';
 
-import 'package:dailywall/rendering/wallpaper_renderer.dart';
+import 'package:dayleaf/rendering/wallpaper_renderer.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../helpers/samples.dart';
@@ -92,7 +92,7 @@ void main() {
         width: 540,
         height: 1200,
       );
-      return WallpaperRenderer.withWatermark(r.image, 'dailywall');
+      return WallpaperRenderer.withWatermark(r.image, 'Dayleaf');
     });
     await expectLater(
       image!,

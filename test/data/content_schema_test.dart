@@ -1,5 +1,5 @@
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/data/content_schema.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/data/content_schema.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const langs = ['en', 'tr'];

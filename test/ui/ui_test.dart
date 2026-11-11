@@ -1,16 +1,16 @@
-import 'package:dailywall/app/app.dart';
-import 'package:dailywall/app/daily_wallpaper_service.dart';
-import 'package:dailywall/app/providers.dart';
-import 'package:dailywall/app/style_repository.dart';
-import 'package:dailywall/core/app_config.dart';
-import 'package:dailywall/core/clock.dart';
-import 'package:dailywall/data/app_store.dart';
-import 'package:dailywall/data/content_repository.dart';
-import 'package:dailywall/domain/user_settings.dart';
-import 'package:dailywall/ui/onboarding/onboarding_screen.dart';
-import 'package:dailywall/ui/settings/about_screen.dart';
-import 'package:dailywall/ui/settings/settings_screen.dart';
-import 'package:dailywall/ui/widgets/ya_logo.dart';
+import 'package:dayleaf/app/app.dart';
+import 'package:dayleaf/app/daily_wallpaper_service.dart';
+import 'package:dayleaf/app/providers.dart';
+import 'package:dayleaf/app/style_repository.dart';
+import 'package:dayleaf/core/app_config.dart';
+import 'package:dayleaf/core/clock.dart';
+import 'package:dayleaf/data/app_store.dart';
+import 'package:dayleaf/data/content_repository.dart';
+import 'package:dayleaf/domain/user_settings.dart';
+import 'package:dayleaf/ui/onboarding/onboarding_screen.dart';
+import 'package:dayleaf/ui/settings/about_screen.dart';
+import 'package:dayleaf/ui/settings/settings_screen.dart';
+import 'package:dayleaf/ui/widgets/ya_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,7 +37,7 @@ void main() {
         InMemorySharedPreferencesAsync.empty();
     store = AppStore();
     PackageInfo.setMockInitialValues(
-      appName: 'dailywall',
+      appName: 'Dayleaf',
       packageName: 'com.example',
       version: '1.0.0',
       buildNumber: '1',
@@ -72,7 +72,7 @@ void main() {
           serviceProvider.overrideWithValue(service),
           scheduleDailyProvider.overrideWithValue((_) async {}),
         ],
-        child: DailyWallApp(locale: const Locale('en'), home: home),
+        child: DayleafApp(locale: const Locale('en'), home: home),
       ),
     );
     await settle(tester);

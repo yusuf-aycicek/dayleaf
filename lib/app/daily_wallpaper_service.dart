@@ -175,7 +175,7 @@ class DailyWallpaperService {
       );
       return ApplyResult(ApplyOutcome.applied, pick: pick);
     } catch (e, st) {
-      debugPrint('dailywall: applying the wallpaper failed: $e\n$st');
+      debugPrint('dayleaf: applying the wallpaper failed: $e\n$st');
       // Keep the pick so the same content is retried, not a new one.
       await store.saveProgress(progress);
       return ApplyResult(ApplyOutcome.failed, error: e);
@@ -276,7 +276,7 @@ class DailyWallpaperService {
         return size;
       }
     } catch (e) {
-      debugPrint('dailywall: display size unavailable: $e');
+      debugPrint('dayleaf: display size unavailable: $e');
     }
     return await store.loadDisplaySize() ?? _fallbackSize;
   }

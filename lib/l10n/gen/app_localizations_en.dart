@@ -13,7 +13,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageNativeName => 'English';
 
   @override
-  String get appTitle => 'dailywall';
+  String get appTitle => 'Dayleaf';
 
   @override
   String get homeTitle => 'Today';
@@ -128,7 +128,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingApplyBody =>
-      'dailywall creates today\'s wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.';
+      'Dayleaf creates today\'s wallpaper on your phone and changes it every day. Setting a wallpaper needs no extra permission, and nothing leaves your device.';
 
   @override
   String get onboardingApplyButton => 'Set my wallpaper';

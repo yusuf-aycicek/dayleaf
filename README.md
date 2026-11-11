@@ -1,10 +1,12 @@
-# dailywall
+# Dayleaf
 
-[![CI](https://github.com/yusuf-aycicek/dailywall/actions/workflows/ci.yml/badge.svg)](https://github.com/yusuf-aycicek/dailywall/actions/workflows/ci.yml)
+<img src="docs/store/icon-512.png" width="96" alt="Dayleaf icon">
+
+[![CI](https://github.com/yusuf-aycicek/dayleaf/actions/workflows/ci.yml/badge.svg)](https://github.com/yusuf-aycicek/dayleaf/actions/workflows/ci.yml)
 
 *[Türkçe](README.tr.md)*
 
-dailywall is an Android app that gives you a new wallpaper every day, made from your
+Dayleaf is an Android app that gives you a new wallpaper every day, made from your
 interests: an English word for your level, a software tip, a motivational line or a
 piece of general knowledge. Each wallpaper is drawn on the phone itself. The app has
 no internet permission, no account, no ads and no analytics.
@@ -97,7 +99,7 @@ characters, also set `TEMP`/`TMP` to such a folder before building. Otherwise Gr
 and the JDK fail with "Unable to establish loopback connection".
 
 Change the package name in **one place**: `android/gradle.properties`
-(`dailywall.applicationId`, `dailywall.appLabel`).
+(`dayleaf.applicationId`, `dayleaf.appLabel`).
 
 ### Tests
 
@@ -166,10 +168,14 @@ be unique. Length limits are in `lib/data/content_schema.dart`. After editing, r
 - **New language:** add `lib/l10n/app_<code>.arb` (including `languageNativeName`),
   run `flutter gen-l10n`, and add the `<code>` text to every content item. The
   validator lists every missing one.
+- **App icon:** edit the colours and positions at the top of
+  `tools/icon/make_icon.py` and run `python tools/icon/make_icon.py`. It writes the
+  adaptive layers (background, foreground, monochrome), the legacy icons and
+  `docs/store/icon-512.png` for Google Play.
 
 ## Privacy
 
-dailywall collects nothing and has no network access. See the
+Dayleaf collects nothing and has no network access. See the
 [privacy policy](docs/privacy-policy.md).
 
 ## License and credits

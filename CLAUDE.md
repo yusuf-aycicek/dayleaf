@@ -1,4 +1,4 @@
-# dailywall – Claude için çalışma notları
+# Dayleaf – Claude için çalışma notları
 
 ## İletişim dili
 
@@ -12,8 +12,8 @@
 
 - İlgi alanlarına göre her gün yeni duvar kâğıdı üreten, tamamen çevrimdışı bir
   **Flutter** uygulaması. Yalnızca **Android** (minSdk 24); iOS kodu yazılmaz.
-- Konum: `C:\dev\dailywall`, kendi git deposu (`main`). Paket adı
-  `com.yusufaycicek.dailywall`, tek yerden değişir: `android/gradle.properties`.
+- Konum: `C:\dev\dailywall` (klasör adı eski kaldı), kendi git deposu (`main`). Paket adı
+  `com.yusufaycicek.dayleaf`, tek yerden değişir: `android/gradle.properties`.
 - Geliştirici: Yusuf Ayçiçek, GitHub `yusuf-aycicek`. Commit e-postası GitHub noreply
   adresidir; kişisel e-posta depoya ya da commit'lere yazılmaz.
 - Mimari, içerik ekleme ve testler: `README.md` / `README.tr.md`. Emülatör, arka plan
@@ -24,10 +24,10 @@
 
 ## Yayın: GitHub Pages
 
-- Site: `https://yusuf-aycicek.github.io/dailywall/`, kaynak `main` dalındaki `docs/`
+- Site: `https://yusuf-aycicek.github.io/dayleaf/`, kaynak `main` dalındaki `docs/`
   klasörü (Jekyll, klasik "Deploy from a branch").
 - Gizlilik politikası adresi **kalıcıdır**:
-  `https://yusuf-aycicek.github.io/dailywall/privacy-policy`. Uygulama
+  `https://yusuf-aycicek.github.io/dayleaf/privacy-policy`. Uygulama
   (`lib/core/app_config.dart`) ve Play Console bu adresi kullanır; yayımlanmış bir
   uygulamadaki bağlantı sonradan değiştirilemez.
 - İleride React tanıtım sitesine geçilince de bu adres aynı kalmalı: derleme çıktısı

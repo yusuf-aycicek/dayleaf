@@ -15,20 +15,20 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   _registerFontLicenses();
   await BackgroundTasks.initialize();
-  runApp(const ProviderScope(child: DailyWallRoot()));
+  runApp(const ProviderScope(child: DayleafRoot()));
 }
 
 /// Picks the language and the first screen from the saved settings, and
 /// applies today's wallpaper whenever the app comes to the foreground
 /// (Android does not promise when the periodic job runs).
-class DailyWallRoot extends ConsumerStatefulWidget {
-  const DailyWallRoot({super.key});
+class DayleafRoot extends ConsumerStatefulWidget {
+  const DayleafRoot({super.key});
 
   @override
-  ConsumerState<DailyWallRoot> createState() => _DailyWallRootState();
+  ConsumerState<DayleafRoot> createState() => _DayleafRootState();
 }
 
-class _DailyWallRootState extends ConsumerState<DailyWallRoot>
+class _DayleafRootState extends ConsumerState<DayleafRoot>
     with WidgetsBindingObserver {
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _DailyWallRootState extends ConsumerState<DailyWallRoot>
     final result = await ref
         .read(serviceProvider)
         .ensureToday(trigger: ApplyTrigger.appOpen);
-    if (kDebugMode) debugPrint('dailywall app open: $result');
+    if (kDebugMode) debugPrint('dayleaf app open: $result');
     if (result.outcome == ApplyOutcome.applied || !first) {
       ref
         ..invalidate(progressProvider)
@@ -71,7 +71,7 @@ class _DailyWallRootState extends ConsumerState<DailyWallRoot>
   Widget build(BuildContext context) {
     final settings = ref.watch(settingsProvider);
     final value = settings.value;
-    return DailyWallApp(
+    return DayleafApp(
       locale: value?.languageCode == null ? null : Locale(value!.languageCode!),
       home: switch (value) {
         null => const Scaffold(),

@@ -17,7 +17,7 @@ val keystoreProperties = Properties().apply {
 val hasReleaseKey = !keystoreProperties.isEmpty
 
 android {
-    namespace = "com.yusufaycicek.dailywall"
+    namespace = "com.yusufaycicek.dayleaf"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -27,9 +27,9 @@ android {
     }
 
     defaultConfig {
-        // Single source of truth: android/gradle.properties (dailywall.applicationId).
-        applicationId = providers.gradleProperty("dailywall.applicationId").get()
-        manifestPlaceholders["appLabel"] = providers.gradleProperty("dailywall.appLabel").get()
+        // Single source of truth: android/gradle.properties (dayleaf.applicationId).
+        applicationId = providers.gradleProperty("dayleaf.applicationId").get()
+        manifestPlaceholders["appLabel"] = providers.gradleProperty("dayleaf.appLabel").get()
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = 24

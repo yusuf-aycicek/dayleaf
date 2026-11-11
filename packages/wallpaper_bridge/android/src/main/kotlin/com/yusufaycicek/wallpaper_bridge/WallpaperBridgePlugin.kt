@@ -104,6 +104,6 @@ class WallpaperBridgePlugin : FlutterPlugin, MethodChannel.MethodCallHandler {
     }
 
     companion object {
-        const val CHANNEL = "com.yusufaycicek.dailywall/wallpaper"
+        const val CHANNEL = "com.yusufaycicek.dayleaf/wallpaper"
     }
 }

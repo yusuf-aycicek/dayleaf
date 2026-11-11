@@ -1,8 +1,8 @@
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/domain/content_selector.dart';
-import 'package:dailywall/domain/progress.dart';
-import 'package:dailywall/domain/spaced_repetition.dart';
-import 'package:dailywall/domain/user_settings.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/domain/content_selector.dart';
+import 'package:dayleaf/domain/progress.dart';
+import 'package:dayleaf/domain/spaced_repetition.dart';
+import 'package:dayleaf/domain/user_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const lt = LocalizedText({'en': 'x', 'tr': 'x'});

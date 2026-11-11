@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/rendering/style/backgrounds.dart';
-import 'package:dailywall/rendering/style/layouts.dart';
-import 'package:dailywall/rendering/style/style_book.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/rendering/style/backgrounds.dart';
+import 'package:dayleaf/rendering/style/layouts.dart';
+import 'package:dayleaf/rendering/style/style_book.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../helpers/samples.dart';

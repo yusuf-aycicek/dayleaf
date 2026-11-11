@@ -1,14 +1,18 @@
 # Google Play store listing / Mağaza metinleri
 
-The short description is limited to 80 characters and the long one to 4000. The limits
+The app name (title) is limited to 30 characters, the short description to 80 and the long one to 4000. The limits
 are checked by `test/data/store_listing_test.dart`.
 
-Kısa açıklama en fazla 80, uzun açıklama en fazla 4000 karakter olabilir.
+Uygulama adı (başlık) en fazla 30, kısa açıklama en fazla 80, uzun açıklama en fazla 4000 karakter olabilir.
 Sınırları `test/data/store_listing_test.dart` denetler.
 
 ## English (en-US)
 
-**App name:** dailywall
+**App name:**
+
+<!-- title:en -->
+Dayleaf: Daily Wallpaper
+<!-- /title:en -->
 
 **Short description:**
 
@@ -19,7 +23,7 @@ A new wallpaper every day: English words, tips and quotes. Offline, no ads.
 **Full description:**
 
 <!-- long:en -->
-dailywall gives your phone a new wallpaper every day, made from the things you want to learn or remember.
+Dayleaf gives your phone a new wallpaper every day, made from the things you want to learn or remember.
 
 Pick your interests:
 • English words for your level (A1–C1), with meaning and an example sentence
@@ -56,12 +60,12 @@ no ads, spaced repetition
 **Closed test invitation:**
 
 <!-- invite:en -->
-Hi! I made a small Android app called dailywall. It gives you a new wallpaper every day with an English word, a software tip, a motivational line or a fact, depending on what you choose. It works fully offline, has no ads and collects no data.
+Hi! I made a small Android app called Dayleaf. It gives you a new wallpaper every day with an English word, a software tip, a motivational line or a fact, depending on what you choose. It works fully offline, has no ads and collects no data.
 
 Google Play needs a group of testers to keep it installed for 14 days before it can be published. Could you help?
 
 1. Join the test: <OPT-IN LINK>
-2. Install dailywall from Google Play with the same Google account.
+2. Install Dayleaf from Google Play with the same Google account.
 3. Keep it installed for 14 days and open it now and then.
 
 If something looks wrong, tell me or use "Send feedback" on the Play page. Thank you!
@@ -69,7 +73,11 @@ If something looks wrong, tell me or use "Send feedback" on the Play page. Thank
 
 ## Türkçe (tr-TR)
 
-**Uygulama adı:** dailywall
+**Uygulama adı:**
+
+<!-- title:tr -->
+Dayleaf: Günlük Duvar Kağıdı
+<!-- /title:tr -->
 
 **Kısa açıklama:**
 
@@ -80,7 +88,7 @@ Her gün yeni duvar kâğıdı: İngilizce kelime, ipucu, söz. Çevrimdışı, 
 **Uzun açıklama:**
 
 <!-- long:tr -->
-dailywall, öğrenmek ya da hatırlamak istediğin şeylerden telefonuna her gün yeni bir duvar kâğıdı hazırlar.
+Dayleaf, öğrenmek ya da hatırlamak istediğin şeylerden telefonuna her gün yeni bir duvar kâğıdı hazırlar.
 
 İlgi alanlarını seç:
 • Seviyene uygun İngilizce kelimeler (A1–C1), anlamı ve örnek cümlesiyle
@@ -117,12 +125,12 @@ kilit ekranı, çevrimdışı, reklamsız, aralıklı tekrar
 **Kapalı test davet mesajı:**
 
 <!-- invite:tr -->
-Merhaba! dailywall adında küçük bir Android uygulaması yaptım. Seçtiğin konuya göre her gün bir İngilizce kelime, yazılım ipucu, motivasyon cümlesi ya da genel kültür bilgisi içeren yeni bir duvar kâğıdı koyuyor. Tamamen çevrimdışı çalışıyor, reklamı yok, hiçbir veri toplamıyor.
+Merhaba! Dayleaf adında küçük bir Android uygulaması yaptım. Seçtiğin konuya göre her gün bir İngilizce kelime, yazılım ipucu, motivasyon cümlesi ya da genel kültür bilgisi içeren yeni bir duvar kâğıdı koyuyor. Tamamen çevrimdışı çalışıyor, reklamı yok, hiçbir veri toplamıyor.
 
 Google Play, yayınlamadan önce bir grup test kullanıcısının uygulamayı 14 gün yüklü tutmasını istiyor. Yardım eder misin?
 
 1. Teste katıl: <KATILIM BAĞLANTISI>
-2. Aynı Google hesabıyla Google Play'den dailywall'ı yükle.
+2. Aynı Google hesabıyla Google Play'den Dayleaf'i yükle.
 3. 14 gün boyunca yüklü tut, arada bir aç.
 
 Bir sorun görürsen bana yaz ya da Play sayfasındaki "Geri bildirim gönder"i kullan. Teşekkürler!

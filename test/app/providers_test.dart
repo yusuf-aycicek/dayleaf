@@ -1,8 +1,8 @@
-import 'package:dailywall/app/daily_wallpaper_service.dart';
-import 'package:dailywall/app/providers.dart';
-import 'package:dailywall/core/clock.dart';
-import 'package:dailywall/data/app_store.dart';
-import 'package:dailywall/data/content_repository.dart';
+import 'package:dayleaf/app/daily_wallpaper_service.dart';
+import 'package:dayleaf/app/providers.dart';
+import 'package:dayleaf/core/clock.dart';
+import 'package:dayleaf/data/app_store.dart';
+import 'package:dayleaf/data/content_repository.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,7 +1,7 @@
 {
   "@@locale": "tr",
   "languageNativeName": "Türkçe",
-  "appTitle": "dailywall",
+  "appTitle": "Dayleaf",
   "homeTitle": "Bugün",
   "historyTitle": "Geçmiş",
   "favoritesTitle": "Favoriler",
@@ -41,7 +41,7 @@
   "onboardingTemplateTitle": "Bir stil seç",
   "onboardingTemplateBody": "Beğendiğin stil ailelerini seç ya da sürprizi kapatıp tek bir stil seç.",
   "onboardingApplyTitle": "Her şey hazır",
-  "onboardingApplyBody": "dailywall bugünün duvar kağıdını telefonunda oluşturur ve her gün değiştirir. Duvar kağıdı ayarlamak ek bir izin gerektirmez ve hiçbir veri cihazından çıkmaz.",
+  "onboardingApplyBody": "Dayleaf bugünün duvar kağıdını telefonunda oluşturur ve her gün değiştirir. Duvar kağıdı ayarlamak ek bir izin gerektirmez ve hiçbir veri cihazından çıkmaz.",
   "onboardingApplyButton": "Duvar kağıdımı ayarla",
 
   "applyNow": "Şimdi uygula",

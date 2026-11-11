@@ -137,7 +137,7 @@ final displaySizeProvider = FutureProvider<(int, int)>((ref) async {
     final size = await service.port.displaySize();
     if (size != null) return size;
   } catch (e) {
-    debugPrint('dailywall: $e');
+    debugPrint('dayleaf: $e');
   }
   return await service.store.loadDisplaySize() ?? (1080, 2400);
 });

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 /// `lib/platform/wallpaper_port.dart`, never directly.
 abstract final class WallpaperBridge {
   static const MethodChannel channel = MethodChannel(
-    'com.yusufaycicek.dailywall/wallpaper',
+    'com.yusufaycicek.dayleaf/wallpaper',
   );
 
   /// Physical portrait size of the default display, in pixels.

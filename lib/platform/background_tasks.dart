@@ -10,7 +10,7 @@ import '../app/daily_wallpaper_service.dart';
 /// wallpaper is already set it returns after reading two preferences.
 /// Opening the app also applies today's wallpaper if the job has not yet.
 abstract final class BackgroundTasks {
-  static const uniqueName = 'dailywall.daily';
+  static const uniqueName = 'dayleaf.daily';
   static const taskName = 'applyDailyWallpaper';
   static const debugTaskName = 'applyDailyWallpaperNow';
 
@@ -40,7 +40,7 @@ abstract final class BackgroundTasks {
   /// early, even when it is forced with `adb shell cmd jobscheduler run`.
   static Future<void> runOnceNow({Duration delay = Duration.zero}) =>
       Workmanager().registerOneOffTask(
-        'dailywall.debug.${DateTime.now().millisecondsSinceEpoch}',
+        'dayleaf.debug.${DateTime.now().millisecondsSinceEpoch}',
         debugTaskName,
         existingWorkPolicy: ExistingWorkPolicy.append,
         initialDelay: delay,
@@ -57,7 +57,7 @@ void callbackDispatcher() {
       trigger: ApplyTrigger.background,
     );
     // Shows up in `adb logcat -s flutter`.
-    debugPrint('dailywall background task "$task": $result');
+    debugPrint('dayleaf background task "$task": $result');
     // A failure is retried by WorkManager with backoff; a skip is a success.
     return result.outcome != ApplyOutcome.failed;
   });

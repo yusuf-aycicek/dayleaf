@@ -13,8 +13,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/data/content_schema.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/data/content_schema.dart';
 
 void main(List<String> args) {
   final root = Directory.current;

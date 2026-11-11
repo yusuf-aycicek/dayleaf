@@ -1,5 +1,5 @@
-import 'package:dailywall/domain/user_settings.dart';
-import 'package:dailywall/platform/wallpaper_port.dart';
+import 'package:dayleaf/domain/user_settings.dart';
+import 'package:dayleaf/platform/wallpaper_port.dart';
 import 'package:flutter/services.dart';
 
 class FakePort implements WallpaperPort {

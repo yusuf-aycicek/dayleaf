@@ -4,10 +4,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dailywall/data/content_models.dart';
-import 'package:dailywall/data/content_repository.dart';
-import 'package:dailywall/data/content_schema.dart';
-import 'package:dailywall/l10n/gen/app_localizations.dart';
+import 'package:dayleaf/data/content_models.dart';
+import 'package:dayleaf/data/content_repository.dart';
+import 'package:dayleaf/data/content_schema.dart';
+import 'package:dayleaf/l10n/gen/app_localizations.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 

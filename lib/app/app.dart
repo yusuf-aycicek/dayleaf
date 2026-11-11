@@ -6,8 +6,8 @@ import '../ui/theme.dart';
 
 /// Root widget. [locale] is null until the user picks a language, in which
 /// case the system locale is matched against the supported ones.
-class DailyWallApp extends StatelessWidget {
-  const DailyWallApp({super.key, this.locale, required this.home});
+class DayleafApp extends StatelessWidget {
+  const DayleafApp({super.key, this.locale, required this.home});
 
   final Locale? locale;
   final Widget home;

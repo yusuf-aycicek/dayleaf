@@ -25,7 +25,7 @@ class StyleRepository {
       languages: languages,
     );
     for (final e in book.errors) {
-      debugPrint('dailywall: style: $e');
+      debugPrint('dayleaf: style: $e');
     }
     return _cache = book;
   }

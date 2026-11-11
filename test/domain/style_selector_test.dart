@@ -1,5 +1,5 @@
-import 'package:dailywall/domain/style_selector.dart';
-import 'package:dailywall/domain/user_settings.dart';
+import 'package:dayleaf/domain/style_selector.dart';
+import 'package:dayleaf/domain/user_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const choices = [
